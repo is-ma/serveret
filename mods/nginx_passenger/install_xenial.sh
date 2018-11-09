@@ -1,14 +1,14 @@
 #! /bin/bash
-this=mods/nginx_passenger/install_xenial.sh
+this_file=mods/nginx_passenger/install_xenial.sh
 
 if grep -q NGINX_PASSENGER_INSTALLED $cache_path; then
-  echo "OK $this"
+  echo "OK $this_file"
 elif ! grep -q RAILS_INSTALLED $cache_path; then
-  echo "- ERROR $this: you must install Rails first"
+  echo "- ERROR $this_file: you must install Rails first"
 else
 
   # install Nginx + Passenger
-  echo -n "- $this... "
+  echo -n "- $this_file... "
   sudo apt-get install -y dirmngr gnupg > /dev/null 2>&1
   sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7 > /dev/null 2>&1
   sudo apt-get install -y apt-transport-https ca-certificates > /dev/null 2>&1

@@ -1,6 +1,6 @@
 #! /bin/bash
 
-this=mods/nginx_passenger/config_generator.sh
+this_file=mods/nginx_passenger/config_generator.sh
 
 if ! grep -q NGINX_PASSENGER_INSTALLED $cache_path; then
   echo " - ERROR $this_file: you must install Passenger first"
@@ -9,7 +9,7 @@ elif [ -z $listen ] || [ -z $passenger_friendly_error_pages ]; then
 else
 
   # generate the site.conf (idempotent)
-  echo -n "- $this... "
+  echo -n "- $this_file... "
   sudo rm /etc/nginx/sites-enabled/*  # delete default
   site_conf=$HOME/"$app_name".conf
   echo "server {" > $site_conf
