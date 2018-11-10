@@ -30,6 +30,7 @@ app_repo='https://github.com/is-ma/hour-app.git --branch v1.0.0'
 #                    SCRIPT
 #################################################
 cache_path=$HOME/serveret/cache_installed
+SERVERET_PATH=$HOME/serveret
 
 if [ $USER == 'root' ]; then
   echo "- ERROR: you are root"
@@ -39,9 +40,9 @@ else
   touch $cache_path
 
   # go for it
-  [ $UFW == 'yes' ] && source ~/serveret/mods/ufw.sh
-  [ $NGINX_PASSENGER == 'yes' ] && source ~/serveret/mods/nginx_passenger/install_$ubuntu_name.sh
-  [ $CONFIG_SITE == 'yes' ] && source ~/serveret/mods/nginx_passenger/config_generator.sh
+  [ $UFW == 'yes' ] && source $SERVERET_PATH/mods/ufw.sh
+  [ $NGINX_PASSENGER == 'yes' ] && source $SERVERET_PATH/mods/nginx_passenger/install_$ubuntu_name.sh
+  [ $CONFIG_SITE == 'yes' ] && source $SERVERET_PATH/mods/nginx_passenger/config_generator.sh
 
   # configure deploy.sh
   sed -i s+MY_APP_PATH+$HOME/$app_name/code+g

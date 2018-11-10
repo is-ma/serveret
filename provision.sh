@@ -32,39 +32,42 @@ rails_version=5.2.1
 #################################################
 #                    SCRIPT
 #################################################
-cache_path=~/serveret/cache_installed
+cache_path=$SERVERET_PATH/cache_installed
+SERVERET_PATH=$HOME/serveret  # unless you're 'vagrant' (see below)
 
 if [ $USER == 'root' ]; then
   echo "- ERROR: you are root"
+elif [ $USER == 'vagrant' ]; then
+  SERVERET_PATH=/vagrant/serveret
 else
 
   # prepare it...
   touch $cache_path
 
   # go for it
-  [ $ISMA_PROMPT_COLORS == 'yes' ] && source ~/serveret/mods/isma/prompt_colors.sh
-  [ $ISMA_GIT_SHORTCUTS == 'yes' ] && source ~/serveret/mods/isma/git_shortcuts.sh
+  [ $ISMA_PROMPT_COLORS == 'yes' ] && source $SERVERET_PATH/mods/isma/prompt_colors.sh
+  [ $ISMA_GIT_SHORTCUTS == 'yes' ] && source $SERVERET_PATH/mods/isma/git_shortcuts.sh
 
-  [ $FIX_LOCALE == 'yes' ] && source ~/serveret/mods/fix_locale.sh
-  [ $UBUNTU_UPDATE == 'yes' ] && source ~/serveret/mods/update_ubuntu.sh
-  [ $TIME_SYNCHRONIZATION == 'yes' ] && source ~/serveret/mods/time_synchronization.sh
+  [ $FIX_LOCALE == 'yes' ] && source $SERVERET_PATH/mods/fix_locale.sh
+  [ $UBUNTU_UPDATE == 'yes' ] && source $SERVERET_PATH/mods/update_ubuntu.sh
+  [ $TIME_SYNCHRONIZATION == 'yes' ] && source $SERVERET_PATH/mods/time_synchronization.sh
 
   if [ $POSTGRESQL == 'yes' ]; then
-    source ~/serveret/mods/pg/asdf.sh
-    source ~/serveret/mods/pg/pg.sh
-    source ~/serveret/mods/pg/port.sh
-    [ $pg_reload_on_reboot == 'yes' ] && source ~/serveret/mods/pg/cronjob.sh
-    [ $pg_allow_remote_access == 'yes' ] && source ~/serveret/mods/pg/allow_remote_access.sh
-    source ~/serveret/mods/pg/start.sh
+    source $SERVERET_PATH/mods/pg/asdf.sh
+    source $SERVERET_PATH/mods/pg/pg.sh
+    source $SERVERET_PATH/mods/pg/port.sh
+    [ $pg_reload_on_reboot == 'yes' ] && source $SERVERET_PATH/mods/pg/cronjob.sh
+    [ $pg_allow_remote_access == 'yes' ] && source $SERVERET_PATH/mods/pg/allow_remote_access.sh
+    source $SERVERET_PATH/mods/pg/start.sh
   fi
 
   if [ $RAILS == 'yes' ]; then
-    source ~/serveret/mods/ruby/rbenv.sh
-    source ~/serveret/mods/ruby/ruby.sh
-    source ~/serveret/mods/ruby/bundler.sh
-    source ~/serveret/mods/node/nvm.sh
-    source ~/serveret/mods/node/node.sh
-    source ~/serveret/mods/rails.sh
+    source $SERVERET_PATH/mods/ruby/rbenv.sh
+    source $SERVERET_PATH/mods/ruby/ruby.sh
+    source $SERVERET_PATH/mods/ruby/bundler.sh
+    source $SERVERET_PATH/mods/node/nvm.sh
+    source $SERVERET_PATH/mods/node/node.sh
+    source $SERVERET_PATH/mods/rails.sh
   fi
 
   # next step
@@ -94,14 +97,14 @@ staging/production:
   rails assets:clobber
   rails assets:precompile
   echo -e '\ncd ~/$app_name/code' >> ~/.bashrc
-  source ~/serveret/deploy.sh  # helper; alias it from dev machine!
+  source $SERVERET_PATH/deploy.sh  # helper; alias it from dev machine!
 
   rails db:create
   rails db:migrate
   rails db:seed
   rails s  # test it is working on port 3000
 
-  source ~/serveret/online_only.sh  # UFW, Nginx, ...
+  source $SERVERET_PATH/online_only.sh  # UFW, Nginx, ...
 "
 
 fi

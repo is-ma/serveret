@@ -27,7 +27,7 @@ else
   chown --recursive $my_user:$my_user /home/$my_user/.ssh
 
   # copy Serveret repo to /home/$my_user/serveret/
-  cp -r ~/serveret/ /home/$my_user/
+  cp -r /root/serveret /home/$my_user/
   chown --recursive $my_user:$my_user /home/$my_user/serveret
 
   # change root password to '$root_pass'

@@ -5,7 +5,7 @@ if ! [ -x ~/.asdf/shims/pg_ctl ]; then
   echo "  * ERROR $this_file: pg_ctl is not in place or is not executable: ~/.asdf/shims/pg_ctl"
 elif [ -z "$pg_version" ]; then
   echo "  * ERROR $this_file: pg_version"
-elif source ~/serveret/mods/pg/status.sh | grep -q PID; then
+elif source $SERVERET_PATH/mods/pg/status.sh | grep -q PID; then
   echo "  OK $this_file"
 else
 
@@ -14,7 +14,7 @@ else
   ~/.asdf/shims/pg_ctl -l ~/pg_log -D ~/.asdf/installs/postgres/$pg_version/data/ start > /dev/null
 
   # test and tell
-  if source ~/serveret/mods/pg/status.sh | grep -q PID; then
+  if source $SERVERET_PATH/mods/pg/status.sh | grep -q PID; then
     echo "DONE, CONFIRMED"
   else
     echo "FAIL"
