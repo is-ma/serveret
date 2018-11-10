@@ -31,7 +31,8 @@ Try deploying:
   source $HOME/serveret/deploy.sh  # and alias it from dev machine!
 
 Try deploying from your dev machine (and alias it!):
-  alias $app_name$(echo '_')$passenger_app_env='ssh $USER@your_ip:serveret/deploy.sh'
+  alias $app_name$(echo '_')$passenger_app_env='ssh $USER@your_ip'
+  alias $app_name$(echo '_')$passenger_app_env(echo '_')deploy='ssh $USER@your_ip:serveret/deploy.sh'
 
 "
 
