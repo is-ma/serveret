@@ -52,10 +52,7 @@ git clone https://github.com/is-ma/serveret.git --branch v1.0.1 serveret/
 cd serveret/
 ```
 
-Customize settings (username, passwords, repo urls, software versions, ...):
-```
-vi settings.sh
-```
+Customize settings inside each main script (username, passwords, repo urls, software versions, ...).
 
 Run it:
 * if you're root (online), start with ```source root_init.sh```
