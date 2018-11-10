@@ -1,7 +1,7 @@
 #! /bin/bash
 this_file=mods/time_synchronization.sh
 
-if grep -q TIME_SYNCHRONIZED $cache_path; then
+if grep -q TIME_SYNCHRONIZED $SERVERET_PATH/cache_installed; then
   echo "OK $this_file"
 elif [ -z "$timezone" ]; then
   echo "- ERROR $this_file: timezone" 
@@ -14,7 +14,7 @@ else
 
   # bookmark (or fail)
   if timedatectl | grep -q "Time zone: $timezone"; then
-    echo TIME_SYNCHRONIZED >> $cache_path
+    echo TIME_SYNCHRONIZED >> $SERVERET_PATH/cache_installed
     echo "DONE, CONFIRMED"
   else
     echo "FAIL"

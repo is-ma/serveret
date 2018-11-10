@@ -1,7 +1,7 @@
 #! /bin/bash
 this_file=mods/ruby/rbenv.sh
 
-if grep -q RBENV_INSTALLED $cache_path; then
+if grep -q RBENV_INSTALLED $SERVERET_PATH/cache_installed; then
   echo "OK $this_file"
 else
 
@@ -19,7 +19,7 @@ else
   fi
 
   # bookmark
-  echo RBENV_INSTALLED >> $cache_path
+  echo RBENV_INSTALLED >> $SERVERET_PATH/cache_installed
   if rbenv --help | grep -q global; then 
     echo "DONE, CONFIRMED"
   else

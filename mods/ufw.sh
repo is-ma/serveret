@@ -1,7 +1,7 @@
 #! /bin/bash
 this_file=mods/ufw.sh
 
-if grep -q UFW_RULES_INSTALLED $cache_path; then
+if grep -q UFW_RULES_INSTALLED $SERVERET_PATH/cache_installed; then
   echo "OK $this_file"
 elif ! [[ -v rules ]]; then 
   echo "- ERROR $this_file: rules array" 
@@ -19,7 +19,7 @@ else
 
   # bookmark
   if [ $status_centinel = "OK" ]; then
-    echo UFW_RULES_INSTALLED >> $cache_path
+    echo UFW_RULES_INSTALLED >> $SERVERET_PATH/cache_installed
     echo "DONE"
   else
     echo "FAIL"

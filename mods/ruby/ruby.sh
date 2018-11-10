@@ -1,9 +1,9 @@
 #! /bin/bash
 this_file=mods/ruby/ruby.sh
 
-if grep -q RUBY_INSTALLED $cache_path; then
+if grep -q RUBY_INSTALLED $SERVERET_PATH/cache_installed; then
   echo "OK $this_file"
-elif ! grep -q RBENV_INSTALLED $cache_path; then
+elif ! grep -q RBENV_INSTALLED $SERVERET_PATH/cache_installed; then
   echo "- ERROR $this_file: you must install rbenv first"
 elif [ -z "$ruby_version" ]; then
   echo "- ERROR $this_file: ruby_version"
@@ -19,7 +19,7 @@ else
 
   # bookmark (or fail)
   if ruby --version | grep -q $ruby_version; then
-    echo RUBY_INSTALLED >> $cache_path
+    echo RUBY_INSTALLED >> $SERVERET_PATH/cache_installed
     echo "DONE, CONFIRMED VERSION"
   else
     echo "FAIL"

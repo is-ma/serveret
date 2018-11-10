@@ -32,7 +32,6 @@ rails_version=5.2.1
 #################################################
 #                    SCRIPT
 #################################################
-cache_path=$SERVERET_PATH/cache_installed
 SERVERET_PATH=$HOME/serveret  # unless you're 'vagrant' (see below)
 
 if [ $USER == 'root' ]; then
@@ -42,7 +41,7 @@ elif [ $USER == 'vagrant' ]; then
 else
 
   # prepare it...
-  touch $cache_path
+  touch $SERVERET_PATH/cache_installed
 
   # go for it
   [ $ISMA_PROMPT_COLORS == 'yes' ] && source $SERVERET_PATH/mods/isma/prompt_colors.sh

@@ -4,9 +4,9 @@ this_file=mods/pg/allow_remote_access.sh
 PG_CONF_FILE_PATH=/home/$USER/.asdf/installs/postgres/$pg_version/data/postgresql.conf
 HBA_CONF_FILE_PATH=/home/$USER/.asdf/installs/postgres/$pg_version/data/pg_hba.conf
 
-if grep -q POSTGRESQL_REMOTE_ADDRESS_ALLOWED $cache_path; then
+if grep -q POSTGRESQL_REMOTE_ADDRESS_ALLOWED $SERVERET_PATH/cache_installed; then
   echo "  OK $this_file"
-elif ! grep -q POSTGRES_INSTALLED $cache_path; then
+elif ! grep -q POSTGRES_INSTALLED $SERVERET_PATH/cache_installed; then
   echo "  * ERROR $this_file: you must install PostgreSQL first"
 elif [ -z "$pg_version" ]; then
   echo "  * ERROR $this_file: pg_version|db_name" 
@@ -27,7 +27,7 @@ else
   fi
 
   # bookmark
-  echo POSTGRESQL_REMOTE_ADDRESS_ALLOWED >> $cache_path
+  echo POSTGRESQL_REMOTE_ADDRESS_ALLOWED >> $SERVERET_PATH/cache_installed
   echo "DONE"
 
 fi

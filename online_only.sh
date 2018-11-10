@@ -29,7 +29,6 @@ app_repo='https://github.com/is-ma/hour-app.git --branch v1.0.0'
 #################################################
 #                    SCRIPT
 #################################################
-cache_path=$HOME/serveret/cache_installed
 SERVERET_PATH=$HOME/serveret
 
 if [ $USER == 'root' ]; then
@@ -37,7 +36,7 @@ if [ $USER == 'root' ]; then
 else
 
   # prepare it...
-  touch $cache_path
+  touch $SERVERET_PATH/cache_installed
 
   # go for it
   [ $UFW == 'yes' ] && source $SERVERET_PATH/mods/ufw.sh

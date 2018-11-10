@@ -1,9 +1,9 @@
 #! /bin/bash
 this_file=mods/nginx_passenger/install_xenial.sh
 
-if grep -q NGINX_PASSENGER_INSTALLED $cache_path; then
+if grep -q NGINX_PASSENGER_INSTALLED $SERVERET_PATH/cache_installed; then
   echo "OK $this_file"
-elif ! grep -q RAILS_INSTALLED $cache_path; then
+elif ! grep -q RAILS_INSTALLED $SERVERET_PATH/cache_installed; then
   echo "- ERROR $this_file: you must install Rails first"
 else
 
@@ -27,7 +27,7 @@ else
 
   # bookmark (or fail)
   if /usr/bin/passenger-config list-instances | grep -q 'PID'; then
-    echo NGINX_PASSENGER_INSTALLED >> $cache_path
+    echo NGINX_PASSENGER_INSTALLED >> $SERVERET_PATH/cache_installed
     echo "DONE"
   else
     echo "FAIL"
