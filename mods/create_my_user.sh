@@ -6,8 +6,6 @@ if [ $USER != "root" ]; then
   echo "- ERROR $this_file: you're not root"
 elif egrep -q "^$my_user:" /etc/passwd; then
   echo "OK $this_file"
-elif [ -z "$root_pass" ] || [ -z "$my_user" ] || [ -z "$my_pass" ]; then
-  echo "- ERROR $this_file: root_pass|my_user|my_pass"
 else
 
   echo "- create a new user..."
@@ -27,7 +25,7 @@ else
   chown --recursive $my_user:$my_user /home/$my_user/.ssh
 
   # copy Serveret repo to /home/$my_user/serveret/
-  cp -r ~/serveret/ /home/$my_user/
+  cp -r /root/serveret /home/$my_user/
   chown --recursive $my_user:$my_user /home/$my_user/serveret
 
   # change root password to '$root_pass'

@@ -1,27 +1,24 @@
 #! /bin/bash
 
 #################################################
-#                GLOBAL CONFIG                  #
+#                init.sh
 #################################################
-git config --global user.email "username@example.com"
-git config --global user.name "Example"
-git config --global push.default simple
+# Create an account (if you're root) and fix your locale
 
-#################################################
-# root_init.sh                    ONLINE (ROOT) #
-#################################################
 CUSTOM_USER=yes  # creates a user and copy serveret/ proyect there
 my_user=deploy  # creates user (sudo), will have same SSH keys as root
 my_pass=password  # won't be used for server access
 root_pass=$my_pass  # choose one or same as my_pass; won't be used to login in
 
+
+
 #################################################
-# provision.sh        ONLINE (USER) AND VAGRANT #
+#                 provision.sh
 #################################################
+# Installs a bunch of software on Ubuntu, either online (like a Droplet) or a dev machine (vagrant)
+
 ISMA_PROMPT_COLORS=yes  # github: is-ma/prompt_colors
 ISMA_GIT_SHORTCUTS=yes  # github: is-ma/git_shortcuts
-
-FIX_LOCALE=yes  # errors related to LC_CTYPE, LC_ALL (type 'locale' to test)
 
 UBUNTU_UPDATE=yes  # runs: sudo apt-get -y update >/dev/null 2>&1
 
@@ -42,9 +39,13 @@ nvm_version=0.33.11  # will be used to install Node.js
 node_version=10.13.0
 rails_version=5.2.1
 
+
+
 #################################################
-# online_only.sh                    ONLINE ONLY #
+#                nginx_and_more.sh
 #################################################
+# Basically installs Passenger + Nginx and configure it for you (use it online)
+
 UFW=yes
 #app01=10.10.10.10
 #app02=11.11.11.11

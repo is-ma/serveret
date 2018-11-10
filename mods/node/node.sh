@@ -1,12 +1,10 @@
 #! /bin/bash
 this_file=mods/node/node.sh
 
-if grep -q NODE_INSTALLED $cache_path; then
+if grep -q NODE_INSTALLED $SERVERET_PATH/cache_installed; then
   echo "OK $this_file"
-elif ! grep -q NVM_INSTALLED $cache_path; then
-  echo "- ERROR $this_file: you must install NVM first"
-elif [ -z "$node_version" ]; then
-  echo "- ERROR $this_file: node_version" 
+elif ! grep -q NVM_INSTALLED $SERVERET_PATH/cache_installed; then
+  echo "- ERROR $this_file: install NVM first"
 else
 
   # install Node
@@ -17,7 +15,7 @@ else
 
   # bookmark (or fail)
   if node --version | grep -q $node_version; then
-    echo NODE_INSTALLED >> $cache_path
+    echo NODE_INSTALLED >> $SERVERET_PATH/cache_installed
     echo "DONE, CONFIRMED_VERSION"
   else
     echo "FAIL"

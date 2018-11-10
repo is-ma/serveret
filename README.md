@@ -1,13 +1,13 @@
 # Serveret
-- it's an automation tool for servers running primarily Ruby on Rails
-- deploy production and staging servers reliably and efficiently
+- deploy development, production and staging servers reliably and efficiently
 - allows to scale your application fast
 - you can duplicate production servers without creating snowflake servers
 - run it once or multiple times, it is idempotent
 
 
 ## What does it (very fast)
-- it creates your deployment_user
+- it fixes your locale in Ubuntu
+- it creates your deployment_user (on staging/production VM)
   * with your given password
   * and add it to sudo group (no more passwords!)
   * add a new password for root
@@ -17,7 +17,6 @@
 - it install the software and versions you choose
   * prompt colors for your bash
   * git shorcuts if you like them
-  * fix your locale in Ubuntu
   * updates Ubuntu system
   * synchronize your time with your country preferences
   * installs PostgreSQL, any version
@@ -31,11 +30,10 @@
 - it guides you to set up your Rails app with comments after each script
 - it provides a firewall (with UFW)
 - it installs Passenger + Nginx (and configure it to match your project)
-- it let you deploy without using Capistrano (easier, faster)
+- it let you deploy easily and faster than with Capistrano
 
 
 ## Installation (tested on Ubuntu 16.04.4 x64)
-* IMPORTANT: v1.0.1 only works online, but not in Vagrant (dev machine)
 
 Generate your keys (if you don't have them yet):
 ```
@@ -45,22 +43,22 @@ cat ~/.ssh/id_rsa.pub  #  add it to your repo site (Github, etc.)
 
 Add serveret:
 ```
-cd # if you're root (e.g. online Droplet)
-cd /vagrant  # if you're on Vagrant dev machine
-
-git clone https://github.com/is-ma/serveret.git --branch v1.0.1 serveret/
+TMP_HOME=$HOME && [ $USER == 'vagrant' ] && TMP_HOME=/vagrant && cd $TMP_HOME
+git clone https://github.com/is-ma/serveret.git --branch v2.0.0 serveret/
 cd serveret/
 ```
 
-Customize settings (username, passwords, repo urls, software versions, ...):
-```
-vi settings.sh
-```
+Customize ```settings.sh``` (username, passwords, repo urls, software versions, ...).
 
-Run it:
-* if you're root (online), start with ```source root_init.sh```
-* if you're in Vagrant (dev machine), start with ```source provision.sh```
-* follow the given tips after launching each script
+Run them:
+* 1) ```source init.sh```
+* 2) ```source provision.sh```
+
+And if you're on staging/production (online):
+* 3) ```source nginx_and_more.sh```
+* 4) ```source deploy.sh```
+
+* Follow the given tips after launching each script.
 
 About database and secrets:
   - Rails database.yml info is read from your project (add it to .gitignore)

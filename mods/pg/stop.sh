@@ -5,6 +5,6 @@ else
 
   # start and output the status
   ~/.asdf/shims/pg_ctl -m fast stop > /dev/null
-  source ~/serveret/mods/pg/status.sh
+  source $SERVERET_PATH/mods/pg/status.sh
 
 fi

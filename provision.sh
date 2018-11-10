@@ -1,42 +1,41 @@
 #! /bin/bash
-source ~/serveret/settings.sh
-cache_path=~/serveret/cache_installed
 
-#################################################
-# provision.sh        ONLINE (USER) AND VAGRANT #
-#################################################
+# set path
+SERVERET_PATH=$HOME/serveret  # unless you're 'vagrant' (see below)
+[ $USER == 'vagrant' ] && SERVERET_PATH=/vagrant/serveret
 
+# install software (if not root)
 if [ $USER == 'root' ]; then
   echo "- ERROR: you are root"
 else
 
   # prepare it...
-  touch $cache_path
+  source $SERVERET_PATH/settings.sh
+  touch $SERVERET_PATH/cache_installed
 
   # go for it
-  [ $ISMA_PROMPT_COLORS == 'yes' ] && source ~/serveret/mods/isma/prompt_colors.sh
-  [ $ISMA_GIT_SHORTCUTS == 'yes' ] && source ~/serveret/mods/isma/git_shortcuts.sh
+  [ $ISMA_PROMPT_COLORS == 'yes' ] && source $SERVERET_PATH/mods/isma/prompt_colors.sh
+  [ $ISMA_GIT_SHORTCUTS == 'yes' ] && source $SERVERET_PATH/mods/isma/git_shortcuts.sh
 
-  [ $FIX_LOCALE == 'yes' ] && source ~/serveret/mods/fix_locale.sh
-  [ $UBUNTU_UPDATE == 'yes' ] && source ~/serveret/mods/update_ubuntu.sh
-  [ $TIME_SYNCHRONIZATION == 'yes' ] && source ~/serveret/mods/time_synchronization.sh
+  [ $UBUNTU_UPDATE == 'yes' ] && source $SERVERET_PATH/mods/update_ubuntu.sh
+  [ $TIME_SYNCHRONIZATION == 'yes' ] && source $SERVERET_PATH/mods/time_synchronization.sh
 
   if [ $POSTGRESQL == 'yes' ]; then
-    source ~/serveret/mods/pg/asdf.sh
-    source ~/serveret/mods/pg/pg.sh
-    source ~/serveret/mods/pg/port.sh
-    [ $pg_reload_on_reboot == 'yes' ] && source ~/serveret/mods/pg/cronjob.sh
-    [ $pg_allow_remote_access == 'yes' ] && source ~/serveret/mods/pg/allow_remote_access.sh
-    source ~/serveret/mods/pg/start.sh
+    source $SERVERET_PATH/mods/pg/asdf.sh
+    source $SERVERET_PATH/mods/pg/pg.sh
+    source $SERVERET_PATH/mods/pg/port.sh
+    [ $pg_reload_on_reboot == 'yes' ] && source $SERVERET_PATH/mods/pg/cronjob.sh
+    [ $pg_allow_remote_access == 'yes' ] && source $SERVERET_PATH/mods/pg/allow_remote_access.sh
+    source $SERVERET_PATH/mods/pg/start.sh
   fi
 
   if [ $RAILS == 'yes' ]; then
-    source ~/serveret/mods/ruby/rbenv.sh
-    source ~/serveret/mods/ruby/ruby.sh
-    source ~/serveret/mods/ruby/bundler.sh
-    source ~/serveret/mods/node/nvm.sh
-    source ~/serveret/mods/node/node.sh
-    source ~/serveret/mods/rails.sh
+    source $SERVERET_PATH/mods/ruby/rbenv.sh
+    source $SERVERET_PATH/mods/ruby/ruby.sh
+    source $SERVERET_PATH/mods/ruby/bundler.sh
+    source $SERVERET_PATH/mods/node/nvm.sh
+    source $SERVERET_PATH/mods/node/node.sh
+    source $SERVERET_PATH/mods/rails.sh
   fi
 
   # next step
@@ -45,35 +44,35 @@ else
 What to do now? (keep this file visible)
 
 development:
-  git clone $app_repo ~/$app_name/code
-
+  git clone $app_repo /vagrant/$app_name/code
   cd /vagrant/$app_name/code
+
   bundle install --without production
 
-  rails db:create
+  rails db:create  # recreate your config/database.yml first
   rails db:migrate
   rails db:seed
   rails s  # test it is working on port 3000
 
 staging/production:
   git clone $app_repo ~/$app_name/code
+  cd ~/$app_name/code
 
   export RAILS_ENV=staging  # staging/production
-  cd ~/$app_name/code
   bundle install --deployment --without development test
   # add config/database.yml, config/master.key
   rails credentials:show  # test
   rails assets:clobber
   rails assets:precompile
   echo -e '\ncd ~/$app_name/code' >> ~/.bashrc
-  source ~/serveret/deploy.sh  # helper; alias it from dev machine!
 
   rails db:create
   rails db:migrate
   rails db:seed
   rails s  # test it is working on port 3000
 
-  source ~/serveret/online_only.sh  # UFW, Nginx, ...
+  source $SERVERET_PATH/nginx_and_more.sh  # UFW, Nginx, ...
+
 "
 
 fi

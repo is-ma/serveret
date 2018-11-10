@@ -1,10 +1,8 @@
 #! /bin/bash
 this_file=mods/node/nvm.sh
 
-if grep -q NVM_INSTALLED $cache_path; then
+if grep -q NVM_INSTALLED $SERVERET_PATH/cache_installed; then
   echo "OK $this_file"
-elif [ -z "$nvm_version" ]; then
-  echo "- ERROR $this_file: nvm_version" 
 else
 
   # install NVM
@@ -14,7 +12,7 @@ else
 
   # bookmark (or fail)
   if nvm --version | grep -q $nvm_version; then
-    echo NVM_INSTALLED >> $cache_path
+    echo NVM_INSTALLED >> $SERVERET_PATH/cache_installed
     echo "DONE, CONFIRMED VERSION"
   else
     echo "FAIL"

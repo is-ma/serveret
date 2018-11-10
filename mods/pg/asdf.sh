@@ -1,10 +1,8 @@
 #! /bin/bash
 this_file=mods/pg/asdf.sh
 
-if grep -q ASDF_INSTALLED $cache_path; then
+if grep -q ASDF_INSTALLED $SERVERET_PATH/cache_installed; then
   echo "OK $this_file"
-elif [ -z "$asdf_version" ]; then
-  echo "- ERROR $this_file: asdf_version" 
 else
 
   # install ASDF
@@ -23,7 +21,7 @@ else
 
   # bookmark (or fail)
   if asdf --version | grep -q $asdf_version; then
-    echo ASDF_INSTALLED >> $cache_path
+    echo ASDF_INSTALLED >> $SERVERET_PATH/cache_installed
     echo "DONE, CONFIRMED VERSION"
   else
     echo "FAIL"

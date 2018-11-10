@@ -4,10 +4,8 @@ this_file=mods/pg/cronjob.sh
 PG_CTL_PATH=/home/$USER/.asdf/installs/postgres/$pg_version/bin/pg_ctl
 PG_DATA_PATH=/home/$USER/.asdf/installs/postgres/$pg_version/data/
 
-if grep -q POSTGRES_CRONJOB_INSTALLED $cache_path; then
+if grep -q POSTGRES_CRONJOB_INSTALLED $SERVERET_PATH/cache_installed; then
   echo "  OK $this_file"
-elif [ -z "$pg_version" ]; then
-  echo "  * ERROR $this_file: pg_version" 
 elif ! [ -x $PG_CTL_PATH ]; then
   echo "  * ERROR $this_file: $PG_CTL_PATH not found"
 elif ! [ -d $PG_DATA_PATH ]; then
@@ -20,7 +18,7 @@ else
 
   # bookmark (or fail)
   if crontab -l | grep -q $PG_CTL_PATH; then
-    echo POSTGRES_CRONJOB_INSTALLED >> $cache_path
+    echo POSTGRES_CRONJOB_INSTALLED >> $SERVERET_PATH/cache_installed
     echo "DONE, CONFIRMED"
   else
     echo "FAIL"
