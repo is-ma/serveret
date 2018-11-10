@@ -103,7 +103,7 @@ staging/production:
   rails db:seed
   rails s  # test it is working on port 3000
 
-  source $SERVERET_PATH/online_only.sh  # UFW, Nginx, ...
+  source $SERVERET_PATH/nginx_and_more.sh  # UFW, Nginx, ...
 
 "
 
