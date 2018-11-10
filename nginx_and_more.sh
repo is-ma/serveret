@@ -1,36 +1,6 @@
 #! /bin/bash
 
-# Basically installs Passenger + Nginx and configure it for you (use it online)
-
-#################################################
-#                CONFIGURATION
-#################################################
-UFW=yes
-#app01=10.10.10.10
-#app02=11.11.11.11
-dev_machine_ip=111.111.111.111
-rules=()
-rules+=("allow ssh")                            # any server
-rules+=("allow from $dev_machine_ip")           # staging
-#rules+=("allow from $app01 to any port 5432")  # production db
-#rules+=("allow from $app02 to any port 5432")  # production db
-
-NGINX_PASSENGER=yes
-ubuntu_name=xenial  # xenial | ___
-
-CONFIG_SITE=yes  # /etc/nginx/sites-enabled/$app_name.conf
-server_name='_'  # "_" is a catch-all domain name; or choose a specific one
-listen=80
-passenger_friendly_error_pages=on  # it's ok for staging
-passenger_app_env=staging  # config/environments/ENVIRONMENT.rb must exists!
-app_name=hour_app
-app_repo='https://github.com/is-ma/hour-app.git --branch v1.0.0'
-
-
-
-#################################################
-#                    SCRIPT
-#################################################
+# set path
 SERVERET_PATH=$HOME/serveret
 
 if [ $USER == 'root' ]; then
@@ -38,6 +8,7 @@ if [ $USER == 'root' ]; then
 else
 
   # prepare it...
+  source $SERVERET_PATH/settings.sh
   touch $SERVERET_PATH/cache_installed
 
   # go for it
