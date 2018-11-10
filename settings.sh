@@ -20,8 +20,6 @@ root_pass=$my_pass  # choose one or same as my_pass; won't be used to login in
 ISMA_PROMPT_COLORS=yes  # github: is-ma/prompt_colors
 ISMA_GIT_SHORTCUTS=yes  # github: is-ma/git_shortcuts
 
-FIX_LOCALE=yes  # errors related to LC_CTYPE, LC_ALL (type 'locale' to test)
-
 UBUNTU_UPDATE=yes  # runs: sudo apt-get -y update >/dev/null 2>&1
 
 TIME_SYNCHRONIZATION=yes
