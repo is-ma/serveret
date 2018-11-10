@@ -44,7 +44,7 @@ cat ~/.ssh/id_rsa.pub  #  add it to your repo site (Github, etc.)
 Add serveret:
 ```
 TMP_HOME=$HOME && [ $USER == 'vagrant' ] && TMP_HOME=/vagrant && cd $TMP_HOME
-git clone https://github.com/is-ma/serveret.git --branch v1.0.1 serveret/
+git clone https://github.com/is-ma/serveret.git --branch v2.0.0 serveret/
 cd serveret/
 ```
 
