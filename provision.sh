@@ -38,11 +38,10 @@ SERVERET_PATH=$HOME/serveret  # unless you're 'vagrant' (see below)
 
 if [ $USER == 'root' ]; then
   echo "- ERROR: you are root"
-elif [ $USER == 'vagrant' ]; then
-  SERVERET_PATH=/vagrant/serveret
 else
 
   # prepare it...
+  [ $USER == 'vagrant' ] && SERVERET_PATH=/vagrant/serveret
   touch $SERVERET_PATH/cache_installed
 
   # go for it
