@@ -7,9 +7,9 @@ app_path=MY_APP_PATH  # this path is set by nginx_and_more.sh
 if [ $USER == 'root' ]; then
   echo "- ERROR: you are root"
 elif [ $USER == 'vagrant' ]; then
-  echo "- ERROR: you are vagrant (on dev machine)"
+  echo "- ERROR: you are on dev machine; use Puma instead"
 elif [ $app_path == 'MY_APP_PATH' ]; then
-  echo "- ERROR: to set up deploy.sh, run nginx_and_more.sh first"
+  echo "- ERROR: empty MY_APP_PATH, run nginx_and_more.sh first"
 else
 
   cd $app_path

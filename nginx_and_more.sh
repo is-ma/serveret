@@ -5,6 +5,8 @@ SERVERET_PATH=$HOME/serveret
 
 if [ $USER == 'root' ]; then
   echo "- ERROR: you are root"
+elif [ $USER == 'vagrant' ]; then
+  echo "- ERROR: you are on dev machine; use Puma instead"
 else
 
   # prepare it...
@@ -17,7 +19,7 @@ else
   [ $CONFIG_SITE == 'yes' ] && source $SERVERET_PATH/mods/nginx_passenger/config_generator.sh
 
   # configure deploy.sh
-  sed -i s+MY_APP_PATH+$HOME/$app_name/code+g
+  sed -i s+MY_APP_PATH+$HOME/$app_name/code+g $SERVERET_PATH/deploy.sh
 
   # next step
   echo "

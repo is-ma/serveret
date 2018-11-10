@@ -45,8 +45,8 @@ What to do now? (keep this file visible)
 
 development:
   git clone $app_repo /vagrant/$app_name/code
-
   cd /vagrant/$app_name/code
+
   bundle install --without production
 
   rails db:create  # recreate your config/database.yml first
@@ -56,18 +56,17 @@ development:
 
 staging/production:
   git clone $app_repo ~/$app_name/code
+  cd ~/$app_name/code
 
   export RAILS_ENV=staging  # staging/production
-  cd ~/$app_name/code
   bundle install --deployment --without development test
   # add config/database.yml, config/master.key
   rails credentials:show  # test
   rails assets:clobber
   rails assets:precompile
   echo -e '\ncd ~/$app_name/code' >> ~/.bashrc
-  source $SERVERET_PATH/deploy.sh  # helper; alias it from dev machine!
 
-  rails db:create  # upload your config/database.yml, config/secrets.yml, etc.
+  rails db:create
   rails db:migrate
   rails db:seed
   rails s  # test it is working on port 3000
