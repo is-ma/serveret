@@ -1,6 +1,5 @@
 # Serveret
-- it's an automation tool for servers running primarily Ruby on Rails
-- deploy production and staging servers reliably and efficiently
+- deploy development, production and staging servers reliably and efficiently
 - allows to scale your application fast
 - you can duplicate production servers without creating snowflake servers
 - run it once or multiple times, it is idempotent
@@ -54,8 +53,9 @@ cd serveret/
 Customize settings inside each main script (username, passwords, repo urls, software versions, ...).
 
 Run it:
-* if you're root (online), start with ```source root_init.sh```
-* if you're in Vagrant (dev machine), start with ```source provision.sh```
+* first, fix locale with ```fix_locale.sh```
+* then, if you're root (online), start with ```source root_init.sh```
+* or if you're in Vagrant (dev machine), start with ```source provision.sh```
 * follow the given tips after launching each script
 
 About database and secrets:

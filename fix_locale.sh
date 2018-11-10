@@ -1,5 +1,7 @@
 #! /bin/bash
+
 # updates locale, no more LC_ALL errors when installing other packages
+
 this_file=mods/fix_locale.sh
 
 if grep -q LOCALE_FIXED $SERVERET_PATH/cache_installed; then
@@ -14,4 +16,13 @@ else
   echo LOCALE_FIXED >> $SERVERET_PATH/cache_installed
   echo "DONE"
 
+  echo '
+#################################################
+What to do now?
+
+For the changes to take effect, now log out then log back in, or open a new terminal.
+
+You can try 'locale' to see if this went well.
+
+'
 fi
