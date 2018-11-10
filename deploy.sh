@@ -1,5 +1,7 @@
 #! /bin/bash
 
+# Deploy to your server without using Capistrano
+
 app_path=MY_APP_PATH  # this path is set by nginx_and_more.sh
 
 if [ $USER == 'root' ]; then

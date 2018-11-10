@@ -1,5 +1,7 @@
 #! /bin/bash
 
+# Basically installs Passenger + Nginx and configure it for you (use it online)
+
 #################################################
 #                CONFIGURATION
 #################################################
@@ -47,14 +49,17 @@ else
   sed -i s+MY_APP_PATH+$HOME/$app_name/code+g
 
   # next step
-  echo '
+  echo "
 
 #################################################
 What to do now?
 
-Helpers:
+Try deploying:
   source $HOME/serveret/deploy.sh  # and alias it from dev machine!
 
-'
+Try deploying from your dev machine (and alias it!):
+  alias $app_name$(echo '_')$passenger_app_env='ssh $USER@your_ip:serveret/deploy.sh'
+
+"
 
 fi

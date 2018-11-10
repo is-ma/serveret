@@ -1,5 +1,7 @@
 #! /bin/bash
 
+# You must be root (usually on a VM online like a Droplet)
+
 #################################################
 #                CONFIGURATION
 #################################################

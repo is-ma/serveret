@@ -1,5 +1,7 @@
 #! /bin/bash
 
+# Installs a bunch of software on Ubuntu, either online (like a Droplet) or a dev machine (vagrant)
+
 #################################################
 #                CONFIGURATION
 #################################################
