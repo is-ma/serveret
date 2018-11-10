@@ -15,7 +15,8 @@ else
 
   # bookmark
   echo LOCALE_FIXED >> $SERVERET_PATH/cache_installed
-  echo "DONE (log out then log back in, try 'locale')"
+  [ $USER == 'root' ] && echo "DONE"
+  [ $USER != 'root' ] && echo "DONE (log out then log back in, try 'locale')"
 fi
 
 # create a user (if root)

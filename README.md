@@ -43,9 +43,7 @@ cat ~/.ssh/id_rsa.pub  #  add it to your repo site (Github, etc.)
 
 Add serveret:
 ```
-cd # if you're root (e.g. online Droplet)
-cd /vagrant  # if you're on Vagrant dev machine
-
+TMP_HOME=$HOME && [ $USER == 'vagrant' ] && TMP_HOME=/vagrant && cd $TMP_HOME
 git clone https://github.com/is-ma/serveret.git --branch v1.0.1 serveret/
 cd serveret/
 ```
