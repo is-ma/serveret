@@ -35,7 +35,6 @@
 
 
 ## Installation (tested on Ubuntu 16.04.4 x64)
-* IMPORTANT: v1.0.1 only works online, but not in Vagrant (dev machine)
 
 Generate your keys (if you don't have them yet):
 ```
