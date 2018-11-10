@@ -45,12 +45,12 @@ else
 What to do now? (keep this file visible)
 
 development:
-  git clone $app_repo ~/$app_name/code
+  git clone $app_repo /vagrant/$app_name/code
 
   cd /vagrant/$app_name/code
   bundle install --without production
 
-  rails db:create
+  rails db:create  # recreate your config/database.yml first
   rails db:migrate
   rails db:seed
   rails s  # test it is working on port 3000
@@ -68,7 +68,7 @@ staging/production:
   echo -e '\ncd ~/$app_name/code' >> ~/.bashrc
   source $SERVERET_PATH/deploy.sh  # helper; alias it from dev machine!
 
-  rails db:create
+  rails db:create  # upload your config/database.yml, config/secrets.yml, etc.
   rails db:migrate
   rails db:seed
   rails s  # test it is working on port 3000
