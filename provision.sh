@@ -104,6 +104,7 @@ staging/production:
   rails s  # test it is working on port 3000
 
   source $SERVERET_PATH/online_only.sh  # UFW, Nginx, ...
+
 "
 
 fi

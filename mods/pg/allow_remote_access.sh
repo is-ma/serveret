@@ -7,9 +7,7 @@ HBA_CONF_FILE_PATH=/home/$USER/.asdf/installs/postgres/$pg_version/data/pg_hba.c
 if grep -q POSTGRESQL_REMOTE_ADDRESS_ALLOWED $SERVERET_PATH/cache_installed; then
   echo "  OK $this_file"
 elif ! grep -q POSTGRES_INSTALLED $SERVERET_PATH/cache_installed; then
-  echo "  * ERROR $this_file: you must install PostgreSQL first"
-elif [ -z "$pg_version" ]; then
-  echo "  * ERROR $this_file: pg_version|db_name" 
+  echo "  * ERROR $this_file: install PostgreSQL first"
 elif ! [ -w $HBA_CONF_FILE_PATH ]; then
   echo "  * ERROR $this_file: $HBA_CONF_FILE_PATH not found or not writable"
 elif ! [ -w $PG_CONF_FILE_PATH ]; then

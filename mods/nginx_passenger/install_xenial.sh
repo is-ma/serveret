@@ -4,7 +4,7 @@ this_file=mods/nginx_passenger/install_xenial.sh
 if grep -q NGINX_PASSENGER_INSTALLED $SERVERET_PATH/cache_installed; then
   echo "OK $this_file"
 elif ! grep -q RAILS_INSTALLED $SERVERET_PATH/cache_installed; then
-  echo "- ERROR $this_file: you must install Rails first"
+  echo "- ERROR $this_file: install Rails first"
 else
 
   # install Nginx + Passenger

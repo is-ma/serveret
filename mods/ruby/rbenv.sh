@@ -20,7 +20,7 @@ else
 
   # bookmark
   echo RBENV_INSTALLED >> $SERVERET_PATH/cache_installed
-  if rbenv --help | grep -q global; then 
+  if rbenv --help | grep -q global; then
     echo "DONE, CONFIRMED"
   else
     echo "FAIL"

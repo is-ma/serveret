@@ -4,9 +4,7 @@ this_file=mods/ruby/ruby.sh
 if grep -q RUBY_INSTALLED $SERVERET_PATH/cache_installed; then
   echo "OK $this_file"
 elif ! grep -q RBENV_INSTALLED $SERVERET_PATH/cache_installed; then
-  echo "- ERROR $this_file: you must install rbenv first"
-elif [ -z "$ruby_version" ]; then
-  echo "- ERROR $this_file: ruby_version"
+  echo "- ERROR $this_file: install rbenv first"
 else
 
   # install Ruby (the idempotent way)...

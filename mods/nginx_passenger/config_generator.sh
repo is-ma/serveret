@@ -3,9 +3,7 @@
 this_file=mods/nginx_passenger/config_generator.sh
 
 if ! grep -q NGINX_PASSENGER_INSTALLED $SERVERET_PATH/cache_installed; then
-  echo " - ERROR $this_file: you must install Passenger first"
-elif [ -z $listen ] || [ -z $passenger_friendly_error_pages ]; then
-  echo " - ERROR $this_file: missing listen|passenger_friendly_error_pages on online_only.sh"
+  echo " - ERROR $this_file: install Passenger first"
 else
 
   # generate the site.conf (idempotent)

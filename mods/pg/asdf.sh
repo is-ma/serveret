@@ -3,8 +3,6 @@ this_file=mods/pg/asdf.sh
 
 if grep -q ASDF_INSTALLED $SERVERET_PATH/cache_installed; then
   echo "OK $this_file"
-elif [ -z "$asdf_version" ]; then
-  echo "- ERROR $this_file: asdf_version" 
 else
 
   # install ASDF

@@ -3,16 +3,14 @@ this_file=mods/ufw.sh
 
 if grep -q UFW_RULES_INSTALLED $SERVERET_PATH/cache_installed; then
   echo "OK $this_file"
-elif ! [[ -v rules ]]; then 
-  echo "- ERROR $this_file: rules array" 
 else
 
   # install UFW rules
   echo -n "- $this_file... "
   status_centinel=OK
   sudo ufw --force reset > /dev/null
-  for (( i=0; i < ${#rules[@]}; i++ )) do 
-    if ! sudo ufw ${rules[i]} > /dev/null; then status_centinel=FAIL; fi 
+  for (( i=0; i < ${#rules[@]}; i++ )) do
+    if ! sudo ufw ${rules[i]} > /dev/null; then status_centinel=FAIL; fi
   done
   sudo ufw --force enable > /dev/null
   sudo ufw logging off > /dev/null

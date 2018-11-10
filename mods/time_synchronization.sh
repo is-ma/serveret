@@ -3,8 +3,6 @@ this_file=mods/time_synchronization.sh
 
 if grep -q TIME_SYNCHRONIZED $SERVERET_PATH/cache_installed; then
   echo "OK $this_file"
-elif [ -z "$timezone" ]; then
-  echo "- ERROR $this_file: timezone" 
 else
 
   # configure time

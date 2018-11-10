@@ -3,9 +3,7 @@ this_file=mods/ruby/bundler.sh
 if grep -q BUNDLER_INSTALLED $SERVERET_PATH/cache_installed; then
   echo "OK $this_file"
 elif ! grep -q RUBY_INSTALLED $SERVERET_PATH/cache_installed; then
-  echo "- ERROR $this_file: you must install Ruby first"
-elif [ -z "$bundler_version" ]; then
-  echo "- ERROR $this_file: bundler_version"
+  echo "- ERROR $this_file: install Ruby first"
 else
 
   # install Bundler

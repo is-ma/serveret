@@ -3,8 +3,6 @@ this_file=mods/pg/start.sh
 
 if ! [ -x ~/.asdf/shims/pg_ctl ]; then
   echo "  * ERROR $this_file: pg_ctl is not in place or is not executable: ~/.asdf/shims/pg_ctl"
-elif [ -z "$pg_version" ]; then
-  echo "  * ERROR $this_file: pg_version"
 elif source $SERVERET_PATH/mods/pg/status.sh | grep -q PID; then
   echo "  OK $this_file"
 else
