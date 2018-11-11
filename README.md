@@ -33,7 +33,7 @@ It's time to make the magic and provision your server:
 source Serveretfile && source .serveret/provision.sh
 ```
 
-Configure your project (step by step to catch any conflict on the go:
+Configure your project (step by step to catch any conflict on the go):
 ```
 # development:
   git clone $app_repo /vagrant/$app_name/code
@@ -50,7 +50,7 @@ Configure your project (step by step to catch any conflict on the go:
   git clone $app_repo ~/$app_name/code
   cd ~/$app_name/code
 
-  export RAILS_ENV=staging  # staging/production
+  export RAILS_ENV=$rails_env  # staging/production
   bundle install --deployment --without development test
   # add/upload config/database.yml, config/master.key
   rails credentials:show  # test

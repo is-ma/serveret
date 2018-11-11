@@ -15,7 +15,7 @@ else
   echo "  listen $listen;" >> $site_conf
   echo "  root /home/$USER/$app_name/code/public;" >> $site_conf
   echo "  passenger_enabled on;" >> $site_conf
-  echo "  passenger_app_env $passenger_app_env;" >> $site_conf
+  echo "  passenger_app_env $rails_env;" >> $site_conf
   echo "  passenger_ruby /home/$USER/.rbenv/shims/ruby;" >> $site_conf
   
   # useful on staging

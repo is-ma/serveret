@@ -48,6 +48,6 @@ CONFIG_NGINX=yes     # /etc/nginx/sites-enabled/app_name.conf
 server_name='_'      # "_" is a catch-all domain
 listen=80
 friendly_errors=yes  # it's ok for staging
-passenger_app_env=staging  # Rails environments/staging.rb must exists!
+rails_env=staging    # Rails environments/staging.rb must exists!
 app_name=hour_app    # try it
 app_repo='https://github.com/is-ma/hour-app.git --branch v1.0.0'
