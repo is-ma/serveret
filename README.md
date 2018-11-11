@@ -2,10 +2,9 @@
 - deploy development, production and staging servers reliably and efficiently
 - allows to scale your application fast
 - you can duplicate production servers without creating snowflake servers
-- run it once or multiple times, it is idempotent
 
 
-## What does it (very fast)
+## What does it do? (very fast)
 - it fixes your locale in Ubuntu
 - it creates your deployment_user (on staging/production VM)
   * with your given password
@@ -51,12 +50,16 @@ cd serveret/
 Customize ```settings.sh``` (username, passwords, repo urls, software versions, ...).
 
 Run them:
-* 1) ```source init.sh```
-* 2) ```source provision.sh```
+```
+source init.sh
+source provision.sh
+```
 
 And if you're on staging/production (online):
-* 3) ```source nginx_and_more.sh```
-* 4) ```source deploy.sh```
+```
+source nginx_and_more.sh
+source deploy.sh
+```
 
 * Follow the given tips after launching each script.
 
