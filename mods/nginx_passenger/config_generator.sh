@@ -7,7 +7,7 @@ if ! grep -q NGINX_PASSENGER_INSTALLED $SERVERET_PATH/cache_installed; then
 else
 
   # generate the site.conf (idempotent)
-  echo -n "- $this_file... "
+  echo "- $this_file... "
   sudo rm /etc/nginx/sites-enabled/*  # delete default
   site_conf=$HOME/"$app_name".conf
   echo "server {" > $site_conf

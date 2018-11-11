@@ -6,7 +6,7 @@ if grep -q UFW_RULES_INSTALLED $SERVERET_PATH/cache_installed; then
 else
 
   # install UFW rules
-  echo -n "- $this_file... "
+  echo "- $this_file... "
   status_centinel=OK
   sudo ufw --force reset > /dev/null
   for (( i=0; i < ${#rules[@]}; i++ )) do
