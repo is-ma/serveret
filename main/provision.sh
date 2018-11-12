@@ -1,8 +1,8 @@
 #! /bin/bash
-SERVERET_PATH=$HOME/.serveret; [ $USER == 'vagrant' ] && SERVERET_PATH=/vagrant/.serveret
+SERVERET_PATH=$HOME/serveret; [ $USER == 'vagrant' ] && SERVERET_PATH=/vagrant/serveret
 
-# prepare it...
-source $SERVERET_PATH/../serveret.conf
+# load config
+source $SERVERET_PATH/serveret.conf
 
 # go for it
 [ $ISMA_PROMPT_COLORS == 'yes' ] && source $SERVERET_PATH/mods/isma/prompt_colors.sh
@@ -28,3 +28,7 @@ if [ $RAILS == 'yes' ]; then
   source $SERVERET_PATH/mods/node/node.sh
   source $SERVERET_PATH/mods/rails.sh
 fi
+
+[ $UFW == 'yes' ] && source $SERVERET_PATH/mods/ufw.sh
+[ $NGINX_PASSENGER == 'yes' ] && source $SERVERET_PATH/mods/nginx_passenger/install_$ubuntu_name.sh
+[ $INSTALL_RAILS_EXAMPLE_APP == 'yes' ] && source $SERVERET_PATH/mods/nginx_passenger/config_example.sh
