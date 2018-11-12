@@ -35,4 +35,6 @@ else
   sed -i "s/PermitRootLogin yes/PermitRootLogin no/" /etc/ssh/sshd_config
   service ssh restart
 
+  # log in
+  su - $my_user  # to login with your new user
 fi

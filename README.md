@@ -4,28 +4,33 @@ Serveret is a script tool to provision Ruby on Rails development/staging/product
 
 
 ## Installation (Ubuntu 16.04.4 x64)
-Generate your keys (if you don't have them yet):
+Prepare the server:
 ```
+# Generate your keys (if you don't have them yet):
 ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub  #  add it to your repo site (Github, etc.)
-```
 
-Fix your locale, after it, log out and log in (test with 'locale'):
-```
+# Fix your locale
 echo -e "LANG=en_US.UTF-8\nLANGUAGE=en_US.UTF-8\nLC_ALL=en_US.UTF-8" | sudo tee /etc/default/locale
+exit  # log it again to apply
 ```
 
-Add serveret, generate Serveretfile and customize it:
 ```
+# Add serveret, generate serveret.conf and customize it:
 GO_HOME=$HOME && [ $USER == 'vagrant' ] && GO_HOME=/vagrant && cd $GO_HOME
-git clone https://github.com/is-ma/serveret.git .serveret/  # HHH custom branch: --branch v2.0.0
-cp .serveret/settings_template.sh Serveretfile
+git clone https://github.com/is-ma/serveret.git .serveret/  # hhh custom branch: --branch v2.0.0
+cp .serveret/settings_template serveret.conf
 ```
+
+
+#### TRY RUNNING A SCRIPT FROM ROOT THAT MAKE THINGS LATER USING ANOTHER ACCOUNT,
+#### THAT WAY, I COULD RUN THE SCRIPT ONCE FROM ROOT
+
+
 
 For root accounts (NOT FOR vagrant USER), create an account first:
 ```
-source Serveretfile && source .serveret/create_my_user.sh
-su - $my_user  # to login with your new user
+source serveret.config && source .serveret/create_my_user.sh
 ```
 
 It's time to make the magic and provision your server:
