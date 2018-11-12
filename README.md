@@ -1,5 +1,5 @@
 # Serveret
-Serveret is a script tool to provision Ruby on Rails development/staging/production environments.
+Serveret is a script tool to provision Ruby on Rails development/staging/production environments. It includes a running Rails app to show it works.
 
 
 
@@ -39,39 +39,30 @@ Prepare the system:
 ```
 # Fix your locale
 echo -e "LANG=en_US.UTF-8\nLANGUAGE=en_US.UTF-8\nLC_ALL=en_US.UTF-8" | sudo tee /etc/default/locale
-exit  # log it again to apply
+exit  # log it again to apply (test with 'locale')
 
 # Add serveret:
-GO_HOME=$HOME && [ $USER == 'vagrant' ] && GO_HOME=/vagrant && cd $GO_HOME
-git clone https://github.com/is-ma/serveret.git serveret/ --branch v2.0.0
+MY_HOME=$HOME; [ $USER == 'vagrant' ] && MY_HOME=/vagrant
+cd $MY_HOME
+git clone https://github.com/is-ma/serveret.git serveret/ --branch v3.0.0
 cd serveret
 ```
 
-# customize serveret.conf
+## Customize Serveret
 Open ```serveret.conf``` and customize it.
 
-# it's time to provision
-source main/provision.sh
+## It's time to provision
 ```
-
-# Try deploying using a script:
+source $MY_HOME/main/provision.sh
 ```
-source $GO_HOME/serveret/main/deploy.sh
-```
-
-Alias deploy script from your dev machine:
-```
-# examples
-alias hour_app_staging='ssh deploy@host'
-alias hour_app_staging_deploy=='ssh deploy@host . /home/deploy/serveret/main/deploy.sh'
-```
-
-
 
 ## Tips
-  - add database.yml / secrets.yml / master.key to .gitignore
   - for many servers use names instead of IPs (/etc/hosts)
   - symlink environments: production.rb -> staging.rb
+  - use main/deploy.sh (see below) to avoid using Capistrano
+    * alias hour_app_staging='ssh deploy@host'
+    * alias hour_app_staging_deploy=='ssh deploy@host . /home/deploy/serveret/main/deploy.sh'
+
 
 
 

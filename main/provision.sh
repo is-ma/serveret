@@ -1,5 +1,6 @@
 #! /bin/bash
-SERVERET_PATH=$HOME/serveret; [ $USER == 'vagrant' ] && SERVERET_PATH=/vagrant/serveret
+MY_HOME=$HOME; [ $USER == 'vagrant' ] && MY_HOME=/vagrant
+SERVERET_PATH=$MY_HOME/serveret
 
 # load config
 source $SERVERET_PATH/serveret.conf
