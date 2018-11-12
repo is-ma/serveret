@@ -76,7 +76,7 @@ source .serveret/nginx_and_more.sh  # UFW, Nginx, ...
 
 Try deploying:
 ```
-source $HOME/serveret/deploy.sh
+source $HOME/serveret/main/deploy.sh
 
 ```
 
@@ -84,7 +84,7 @@ Alias deploy script from your dev machine:
 ```
 # examples
 alias app_name_staging='ssh user@host'
-alias app_name_staging_deploy=='ssh user@host . /home/user/.serveret/deploy.sh'
+alias app_name_staging_deploy=='ssh user@host . /home/user/.serveret/main/deploy.sh'
 ```
 
 

@@ -2,8 +2,7 @@
 SERVERET_PATH=$HOME/serveret; [ $USER == 'vagrant' ] && SERVERET_PATH=/vagrant/serveret
 
 # prepare it...
-source $SERVERET_PATH/settings.sh
-touch $SERVERET_PATH/cache_installed
+source $SERVERET_PATH/settings.config
 
 # go for it
 [ $UFW == 'yes' ] && source $SERVERET_PATH/mods/ufw.sh
@@ -11,4 +10,4 @@ touch $SERVERET_PATH/cache_installed
 [ $CONFIG_SITE == 'yes' ] && source $SERVERET_PATH/mods/nginx_passenger/config_generator.sh
 
 # configure deploy.sh
-sed -i s+=MY_APP_PATH+=$HOME/$app_name/code+g $SERVERET_PATH/deploy.sh
+sed -i s+=MY_APP_PATH+=$HOME/$app_name/code+g $SERVERET_PATH/main/deploy.sh
