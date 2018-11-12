@@ -1,11 +1,12 @@
 #! /bin/bash
 echo "- mods/nginx_passenger/config_example.sh"
-hour_app_repo='https://github.com/is-ma/hour-app.git --branch v1.0.0'
+hour_app_repo='https://github.com/is-ma/hour-app.git --branch v1.0.1'
 git clone $hour_app_repo $MY_HOME/hour_app/code > /dev/null 2>&1
 cd $MY_HOME/hour_app/code
 
 # create and setup db
 [ $USER == 'vagrant' ] && createuser $db_user -d  # createuser --help
+bundle install --deployment --without development test > /dev/null 2>&1
 RAILS_ENV=staging rails db:create db:migrate db:seed
 
 # configure Passenger + Nginx

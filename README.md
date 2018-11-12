@@ -53,7 +53,7 @@ Open ```serveret.conf``` and customize it.
 
 ## It's time to provision
 ```
-source $MY_HOME/main/provision.sh
+source main/provision.sh
 ```
 
 ## Tips
