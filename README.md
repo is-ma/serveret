@@ -59,17 +59,17 @@ source $MY_HOME/main/provision.sh
 ## Tips
   - for many servers use names instead of IPs (/etc/hosts)
   - symlink environments: production.rb -> staging.rb
-  - use main/deploy.sh (see below) to avoid using Capistrano
+  - use main/deploy.sh from your dev machine (see below) to avoid using Capistrano
     * alias hour_app_staging='ssh deploy@host'
     * alias hour_app_staging_deploy=='ssh deploy@host . /home/deploy/serveret/main/deploy.sh'
 
 
 
 
-## Support
+# Support
 Please [open an issue](https://github.com/is-ma/serveret/issues/new) for support.
 
 
 
-## Contributing
+# Contributing
 Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/is-ma/serveret/compare/).
