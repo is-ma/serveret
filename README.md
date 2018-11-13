@@ -84,9 +84,11 @@ end
 
 ### Development
 For ```rails server``` to work, it isn't required to stop Nginx, but you need to install missing gems and databases:
-  - ```bundle install --with development```
-  - ```RAILS_ENV=development rails db:create db:migrate db:seed```
-  - On browser, use 192.168.33.10:3000
+  - ```bundle install --with development --no-deployment```
+  - ```RAILS_ENV=development rails db:create   # first time only```
+  - ```RAILS_ENV=development rails db:migrate```
+  - ```RAILS_ENV=development rails db:seed     # first time only```
+  - Use 192.168.33.10:3000 to load the app
 
 ### General
   - If you have many servers, it's easier to use names instead of IPs (/etc/hosts)
