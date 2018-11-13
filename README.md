@@ -1,11 +1,14 @@
 # Serveret
 Serveret is a script tool to provision Ruby on Rails development/staging/production environments. It includes a running Rails app to show it works.
 
+This installation works on Ubuntu 16.04.4 x64.
+
+If your server is online (e.g. a DigitalOcean Droplet), chances are you have root access and you must start from **STEP 1**, otherwise you probably have a virtual machine (maybe using Vagrant) and you need to start with **STEP 2**.
 
 
-## Installation (Ubuntu 16.04.4 x64)
+## Installation
 
-(ROOT ONLY) Create a user:
+**STEP 1**: ROOT ONLY - Create a user.
 ```
 #! /bin/bash
 my_user=deploy
@@ -35,7 +38,7 @@ service ssh restart
 su - $my_user
 ```
 
-Prepare the system:
+**STEP 2**: Prepare the system.
 ```
 # Fix your locale
 echo -e "LANG=en_US.UTF-8\nLANGUAGE=en_US.UTF-8\nLC_ALL=en_US.UTF-8" | sudo tee /etc/default/locale
@@ -48,10 +51,10 @@ git clone https://github.com/is-ma/serveret.git serveret/ --branch v3.0.4
 cd serveret
 ```
 
-## Customize Serveret
-Open ```serveret.conf``` and customize it.
+**STEP 3**: Customize Serveret.
+Open ```serveret.conf``` with a text editor and customize it.
 
-## It's time to provision
+**STEP 4**: It's time to provision your software.
 ```
 source main/provision.sh
 ```
@@ -60,11 +63,37 @@ Now put your server IP on a browser to see the example project.
 
 
 ## Tips
+
+### Vagrantfile
+Here is the Vagrantfile I use. For each VM I have, I increment the number on hostname and IPs (e.g. 10, 11, 12, ...), so there are no collisions between them and all the VM and my iMac can ping between them. So, it is very easy to simulate a lot machines for practicing scaling techniques on production without spending a single dollar.
+
+Also, I don't need to use *forwarded_port* in Vagrantfile and have to see lots of addresses in my browser like *localhost:80* and *localhost:3000*, so it is pretty easy to know to wich VM I'm talking to just by watching the IPs on the browser 192.168.33.10 (Nginx listen on 80) or 192.168.33.10:3000.
+
+*NOTE*: My iMac private IP is 192.168.10.10 and yes, it's a different network from the VMs, but Vagrant's magic configure all the networking for me behind the scenes just by doing ```vagrant up```.
+
+```ruby
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/xenial64"
+  config.vm.hostname = '10-AppName'
+  config.vm.network "private_network", ip: "192.168.33.10"
+  #config.vm.provider "virtualbox" do |vb|
+  #  vb.memory = "2048"
+  #end
+end
+```
+
+### Development
+For ```rails server``` to work, it isn't required to stop Nginx, but you need to install missing gems and databases:
+  - ```bundle install --with development```
+  - ```RAILS_ENV=development rails db:create db:migrate db:seed```
+  - On browser, use 192.168.33.10:3000
+
+### General
   - If you have many servers, it's easier to use names instead of IPs (/etc/hosts)
   - In Rails, symlink your environments: production.rb -> staging.rb (DRY)
-  - Use main/deploy.sh from your dev machine (see below) to avoid using Capistra-noise:
-    * alias hour_app_staging='ssh deploy@host'
-    * alias hour_app_staging_deploy=='ssh deploy@host . /home/deploy/serveret/main/deploy.sh'
+  - Use ```main/deploy.sh``` from your dev machine (see below) to avoid using Capistra-noise:
+    * ```alias hour_app_staging='ssh deploy@host'```
+    * ```alias hour_app_staging_deploy='ssh deploy@host . /home/deploy/serveret/main/deploy.sh'```
 
 
 
@@ -75,3 +104,4 @@ Please [open an issue](https://github.com/is-ma/serveret/issues/new) for support
 
 # Contributing
 Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/is-ma/serveret/compare/).
+
