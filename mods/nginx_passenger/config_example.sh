@@ -34,3 +34,4 @@ sudo mv hour_app.conf /etc/nginx/sites-available/
 sudo ln -s /etc/nginx/sites-available/hour_app.conf /etc/nginx/sites-enabled/
 
 source $MY_HOME/serveret/main/deploy.sh
+sudo service nginx restart  # needed to take the new Nginx configuration
