@@ -7,7 +7,7 @@ cd $MY_HOME/hour_app/code
 # create and setup db
 [ $USER == 'vagrant' ] && createuser $db_user -d  # createuser --help
 bundle install --deployment --without development test > /dev/null 2>&1
-RAILS_ENV=staging rails db:create db:migrate db:seed
+RAILS_ENV=$rails_env rails db:create db:migrate db:seed
 
 # configure Passenger + Nginx
 sudo rm /etc/nginx/sites-enabled/*  # delete default
@@ -17,7 +17,7 @@ server {
   listen 80;
   root $MY_HOME/hour_app/code/public;
   passenger_ruby $HOME/.rbenv/shims/ruby;
-  passenger_app_env staging;  # if staging, Rails environments/staging.rb must exist!
+  passenger_app_env $rails_env;  # if staging, Rails environments/staging.rb must exist!
   passenger_friendly_error_pages on;  # on|off, this is great for staging
   passenger_enabled on;
 
