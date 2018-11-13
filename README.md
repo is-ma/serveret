@@ -55,14 +55,16 @@ Open ```serveret.conf``` and customize it.
 ```
 source main/provision.sh
 ```
+Now put your server IP on a browser to see the example project.
+
+
 
 ## Tips
-  - for many servers use names instead of IPs (/etc/hosts)
-  - symlink environments: production.rb -> staging.rb
-  - use main/deploy.sh from your dev machine (see below) to avoid using Capistrano
+  - If you have many servers, it's easier to use names instead of IPs (/etc/hosts)
+  - In Rails, symlink your environments: production.rb -> staging.rb (DRY)
+  - Use main/deploy.sh from your dev machine (see below) to avoid using Capistra-noise:
     * alias hour_app_staging='ssh deploy@host'
     * alias hour_app_staging_deploy=='ssh deploy@host . /home/deploy/serveret/main/deploy.sh'
-
 
 
 
