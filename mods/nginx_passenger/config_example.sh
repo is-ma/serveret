@@ -1,6 +1,6 @@
 #! /bin/bash
 echo "- mods/nginx_passenger/config_example.sh"
-hour_app_repo='https://github.com/is-ma/hour-app.git --branch v1.0.1'
+hour_app_repo='https://github.com/is-ma/hour-app.git --branch v1.0.2'
 git clone $hour_app_repo $MY_HOME/hour_app/code > /dev/null 2>&1
 cd $MY_HOME/hour_app/code
 
