@@ -1,8 +1,4 @@
 #! /bin/bash
-MY_HOME=$HOME; [ $USER == 'vagrant' ] && MY_HOME=/vagrant
-SERVERET_PATH=$MY_HOME/serveret
-
-# load config
 source $MY_HOME/serveret/serveret.conf
 
 # go for it
