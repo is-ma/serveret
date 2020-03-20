@@ -1,4 +1,5 @@
 #! /bin/bash
+MY_HOME=$HOME; [ $USER == 'vagrant' ] && MY_HOME=/vagrant
 source $MY_HOME/serveret/serveret.conf
 
 # go for it
