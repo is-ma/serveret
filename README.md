@@ -1,5 +1,5 @@
 # Serveret
-Serveret is a script tool to provision Ruby on Rails development/staging/production environments. It includes a running Rails app to show it works.
+Serveret is a script tool to provision Ruby on Rails development/staging/production environments. It includes a running Rails app example to show it works properly.
 
 This installation works on Ubuntu 16.04.4 x64.
 
@@ -8,12 +8,12 @@ If your server is online (e.g. a DigitalOcean Droplet), chances are you have roo
 
 ## Installation
 
-**STEP 1**: ROOT ONLY - Create a user.
+**STEP 1**: ROOT ONLY - Create a user (not on Vagrant)
 ```
 #! /bin/bash
 my_user=deploy
-my_pass=password    # choose one, won't be used for server access
-root_pass=$my_pass  # choose one or same as my_pass; won't be used to login in
+my_pass=password    # choose any, but won't be used for server access
+root_pass=$my_pass  # won't be used to login in
 
 # test: grep "^$my_user:" /etc/passwd
 useradd -m -s /bin/bash $my_user > /dev/null 2>&1
@@ -43,6 +43,8 @@ su - $my_user
 # Fix your locale
 echo -e "LANG=en_US.UTF-8\nLANGUAGE=en_US.UTF-8\nLC_ALL=en_US.UTF-8" | sudo tee /etc/default/locale
 exit  # log it again to apply (test with 'locale')
+
+# Log in again
 
 # Add serveret:
 MY_HOME=$HOME; [ $USER == 'vagrant' ] && MY_HOME=/vagrant
@@ -75,6 +77,7 @@ Also, I don't need to use *forwarded_port* in Vagrantfile and have to see lots o
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
   config.vm.hostname = '10-AppName'
+  #config.disksize.size = "20GB"  # uses https://github.com/sprotheroe/vagrant-disksize
   config.vm.network "private_network", ip: "192.168.33.10"
   #config.vm.provider "virtualbox" do |vb|
   #  vb.memory = "2048"
@@ -88,11 +91,11 @@ For ```rails server``` to work, it isn't required to stop Nginx, but you need to
   - ```RAILS_ENV=development rails db:create   # first time only```
   - ```RAILS_ENV=development rails db:migrate```
   - ```RAILS_ENV=development rails db:seed     # first time only```
-  - Use 192.168.33.10:3000 to load the app
+  - Use 192.168.33.10:3000 to load the app.
 
 ### General
-  - If you have many servers, it's easier to use names instead of IPs (/etc/hosts)
-  - In Rails, symlink your environments: production.rb -> staging.rb (DRY)
+  - If you have many servers, it's easier to use names instead of IPs (/etc/hosts).
+  - In Rails, symlink your environments: production.rb -> staging.rb (DRY).
   - Use ```main/deploy.sh``` from your dev machine (see below) to avoid using Capistra-noise:
     * ```alias hour_app_staging='ssh deploy@host'```
     * ```alias hour_app_staging_deploy='ssh deploy@host . /home/deploy/serveret/main/deploy.sh'```
@@ -106,4 +109,3 @@ Please [open an issue](https://github.com/is-ma/serveret/issues/new) for support
 
 # Contributing
 Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/is-ma/serveret/compare/).
-
