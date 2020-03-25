@@ -1,8 +1,7 @@
 #! /bin/bash
-echo "- mods/nginx_passenger/config_example.sh"
-hour_app_repo='https://github.com/is-ma/hour-app.git --branch v1.0.3'
-git clone $hour_app_repo $MY_HOME/hour_app/code > /dev/null 2>&1
-cd $MY_HOME/hour_app/code
+echo "- mods/nginx_passenger/config_rails_app.sh"
+git clone $app_repository $MY_HOME/rails_app/code > /dev/null 2>&1
+cd $MY_HOME/rails_app/code
 
 bundle install --deployment --without development test > /dev/null 2>&1
 
@@ -16,7 +15,7 @@ echo "
 server {
   server_name _;  # "_" is a catch-all domain
   listen 80;
-  root $MY_HOME/hour_app/code/public;
+  root $MY_HOME/rails_app/code/public;
   passenger_ruby $HOME/.rbenv/shims/ruby;
   passenger_app_env $rails_env;  # if staging, Rails environments/staging.rb must exist!
   passenger_friendly_error_pages on;  # on|off, this is great for staging
@@ -29,9 +28,10 @@ server {
     expires max;  # Thu, 31 Dec 2037 23:55:55 GMT
     add_header Cache-Control public;
   }
-}" > hour_app.conf
-sudo mv hour_app.conf /etc/nginx/sites-available/
-sudo ln -s /etc/nginx/sites-available/hour_app.conf /etc/nginx/sites-enabled/
+}" > rails_app.conf
+sudo mv rails_app.conf /etc/nginx/sites-available/
+sudo ln -s /etc/nginx/sites-available/rails_app.conf /etc/nginx/sites-enabled/
 
 source $MY_HOME/serveret/main/deploy.sh
 sudo service nginx restart  # needed to take the new Nginx configuration
+

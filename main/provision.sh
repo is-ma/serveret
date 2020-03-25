@@ -29,4 +29,4 @@ fi
 
 [ $UFW == 'yes' ] && source $MY_HOME/serveret/mods/ufw.sh
 [ $NGINX_PASSENGER == 'yes' ] && source $MY_HOME/serveret/mods/nginx_passenger/install_$ubuntu_name.sh
-[ $INSTALL_RAILS_EXAMPLE_APP == 'yes' ] && source $MY_HOME/serveret/mods/nginx_passenger/config_example.sh
+[ $INSTALL_RAILS_APP == 'yes' ] && source $MY_HOME/serveret/mods/nginx_passenger/config_rails_app.sh
