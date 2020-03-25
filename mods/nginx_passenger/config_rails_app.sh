@@ -1,4 +1,7 @@
 #! /bin/bash
+MY_HOME=$HOME; [ $USER == 'vagrant' ] && MY_HOME=/vagrant
+source $MY_HOME/serveret/serveret.conf
+
 echo "- mods/nginx_passenger/config_rails_app.sh"
 git clone $app_repository $MY_HOME/rails_app/code > /dev/null 2>&1
 cd $MY_HOME/rails_app/code
@@ -34,4 +37,3 @@ sudo ln -s /etc/nginx/sites-available/rails_app.conf /etc/nginx/sites-enabled/
 
 source $MY_HOME/serveret/main/deploy.sh
 sudo service nginx restart  # needed to take the new Nginx configuration
-
