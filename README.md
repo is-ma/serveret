@@ -49,7 +49,7 @@ exit  # log it again to apply (test with 'locale')
 # Add serveret:
 MY_HOME=$HOME; [ $USER == 'vagrant' ] && MY_HOME=/vagrant
 cd $MY_HOME
-git clone https://github.com/is-ma/serveret.git serveret/ --branch v4.1.2
+git clone https://github.com/is-ma/serveret.git serveret/ --branch v4.1.3
 cd serveret
 ```
 
