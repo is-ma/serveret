@@ -1,7 +1,6 @@
 #! /bin/bash
-MY_HOME=$HOME; [ $USER == 'vagrant' ] && MY_HOME=/vagrant
-source $MY_HOME/serveret/serveret.conf
-app_path=$MY_HOME/rails_app/code
+source ~/.serveret/serveret.conf
+app_path=~/rails_app/code
 
 # let's deploy
 cd $app_path

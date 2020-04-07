@@ -1,4 +1,6 @@
 #! /bin/bash
+source ~/.serveret/serveret.conf
+
 # test: timedatectl | grep "Time zone: $timezone"
 echo "- mods/time_synchronization.sh"
 sudo timedatectl set-timezone $timezone

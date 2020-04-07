@@ -1,32 +1,31 @@
 #! /bin/bash
-MY_HOME=$HOME; [ $USER == 'vagrant' ] && MY_HOME=/vagrant
-source $MY_HOME/serveret/serveret.conf
+source ~/.serveret/serveret.conf
 
 # go for it
-[ $ISMA_PROMPT_COLORS == 'yes' ] && source $MY_HOME/serveret/mods/isma/prompt_colors.sh
-[ $ISMA_GIT_SHORTCUTS == 'yes' ] && source $MY_HOME/serveret/mods/isma/git_shortcuts.sh
+[ $ISMA_PROMPT_COLORS == 'yes' ] && source ~/.serveret/mods/isma/prompt_colors.sh
+[ $ISMA_GIT_SHORTCUTS == 'yes' ] && source ~/.serveret/mods/isma/git_shortcuts.sh
 
-[ $UBUNTU_UPDATE == 'yes' ] && source $MY_HOME/serveret/mods/update_ubuntu.sh
-[ $TIME_SYNCHRONIZATION == 'yes' ] && source $MY_HOME/serveret/mods/time_synchronization.sh
+[ $UBUNTU_UPDATE == 'yes' ] && source ~/.serveret/mods/update_ubuntu.sh
+[ $TIME_SYNCHRONIZATION == 'yes' ] && source ~/.serveret/mods/time_synchronization.sh
 
 if [ $POSTGRESQL == 'yes' ]; then
-  source $MY_HOME/serveret/mods/pg/asdf.sh
-  source $MY_HOME/serveret/mods/pg/pg.sh
-  source $MY_HOME/serveret/mods/pg/port.sh
-  [ $pg_reload_on_reboot == 'yes' ] && source $MY_HOME/serveret/mods/pg/cronjob.sh
-  [ $pg_allow_remote_access == 'yes' ] && source $MY_HOME/serveret/mods/pg/allow_remote_access.sh
-  source $MY_HOME/serveret/mods/pg/start.sh
+  source ~/.serveret/mods/pg/asdf.sh
+  source ~/.serveret/mods/pg/pg.sh
+  source ~/.serveret/mods/pg/port.sh
+  [ $pg_reload_on_reboot == 'yes' ] && source ~/.serveret/mods/pg/cronjob.sh
+  [ $pg_allow_remote_access == 'yes' ] && source ~/.serveret/mods/pg/allow_remote_access.sh
+  source ~/.serveret/mods/pg/start.sh
 fi
 
 if [ $RAILS == 'yes' ]; then
-  source $MY_HOME/serveret/mods/ruby/rbenv.sh
-  source $MY_HOME/serveret/mods/ruby/ruby.sh
-  source $MY_HOME/serveret/mods/ruby/bundler.sh
-  source $MY_HOME/serveret/mods/node/nvm.sh
-  source $MY_HOME/serveret/mods/node/node.sh
-  source $MY_HOME/serveret/mods/rails.sh
+  source ~/.serveret/mods/ruby/rbenv.sh
+  source ~/.serveret/mods/ruby/ruby.sh
+  source ~/.serveret/mods/ruby/bundler.sh
+  source ~/.serveret/mods/node/nvm.sh
+  source ~/.serveret/mods/node/node.sh
+  source ~/.serveret/mods/rails.sh
 fi
 
-[ $UFW == 'yes' ] && source $MY_HOME/serveret/mods/ufw.sh
-[ $NGINX_PASSENGER == 'yes' ] && source $MY_HOME/serveret/mods/nginx_passenger/install_$ubuntu_name.sh
-[ $INSTALL_RAILS_APP == 'yes' ] && source $MY_HOME/serveret/mods/nginx_passenger/config_rails_app.sh
+[ $UFW == 'yes' ] && source ~/.serveret/mods/ufw.sh
+[ $NGINX_PASSENGER == 'yes' ] && source ~/.serveret/mods/nginx_passenger/install_$ubuntu_name.sh
+[ $INSTALL_RAILS_APP == 'yes' ] && source ~/.serveret/mods/nginx_passenger/config_rails_app.sh

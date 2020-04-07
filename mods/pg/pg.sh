@@ -1,4 +1,6 @@
 #! /bin/bash
+source ~/.serveret/serveret.conf
+
 # test: psql --version | grep $pg_version
 echo "- mods/pg/pg.sh v$pg_version"
 sudo apt-get install -y build-essential > /dev/null 2>&1

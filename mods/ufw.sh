@@ -1,4 +1,6 @@
 #! /bin/bash
+source ~/.serveret/serveret.conf
+
 # test: sudo ufw status
 echo "- mods/ufw.sh"
 sudo ufw --force reset > /dev/null

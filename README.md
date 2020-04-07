@@ -9,6 +9,9 @@ If your server is online (e.g. a DigitalOcean Droplet), chances are you have roo
 ## Installation
 
 **STEP 1**: ROOT ONLY - Create a user (not on Vagrant)
+
+Save the next script on a file.sh, give it ```chmod +x file.sh``` and run it.
+
 ```
 #! /bin/bash
 my_user=deploy
@@ -47,18 +50,16 @@ exit  # log it again to apply (test with 'locale')
 # Log in again
 
 # Add serveret:
-MY_HOME=$HOME; [ $USER == 'vagrant' ] && MY_HOME=/vagrant
-cd $MY_HOME
-git clone https://github.com/is-ma/serveret.git serveret/ --branch v4.1.5
-cd serveret
+git clone https://github.com/is-ma/serveret.git ~/.serveret/ --branch v5.0.0
+cd ~/.serveret
 ```
 
 **STEP 3**: Customize Serveret.
-Open ```serveret.conf``` with a text editor and customize it.
+Open ```~/.serveret/serveret.conf``` with a text editor and customize it.
 
 **STEP 4**: It's time to provision your software.
 ```
-source main/provision.sh
+source ~/.serveret/main/provision.sh
 ```
 Now put your server IP on a browser to see the example project.
 

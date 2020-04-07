@@ -1,4 +1,6 @@
 #! /bin/bash
+source ~/.serveret/serveret.conf
+
 # test: asdf --version | grep $asdf_version
 echo "- mods/pg/asdf.sh v$asdf_version"
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v$asdf_version > /dev/null 2>&1
