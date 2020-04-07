@@ -29,3 +29,4 @@ fi
 [ $UFW == 'yes' ] && source ~/.serveret/mods/ufw.sh
 [ $NGINX_PASSENGER == 'yes' ] && source ~/.serveret/mods/nginx_passenger/install_$ubuntu_name.sh
 [ $INSTALL_RAILS_APP == 'yes' ] && source ~/.serveret/mods/nginx_passenger/config_rails_app.sh
+[ $USER == 'vagrant' ] && cp /home/vagrant/.serveret/serveret.conf /vagrant/
