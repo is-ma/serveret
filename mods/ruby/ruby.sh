@@ -1,4 +1,6 @@
 #! /bin/bash
+source ~/.serveret/serveret.conf
+
 # test: ruby --version | grep $ruby_version
 echo "- mods/ruby/ruby.sh v$ruby_version"
 sudo apt-get install -y build-essential libssl-dev libreadline-dev zlib1g-dev > /dev/null 2>&1
