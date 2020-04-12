@@ -80,6 +80,7 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = '10-AppName'
   #config.disksize.size = "20GB"  # uses https://github.com/sprotheroe/vagrant-disksize
   config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.network :forwarded_port, guest: 22, host: 2210  # 22nn
   #config.vm.provider "virtualbox" do |vb|
   #  vb.memory = "2048"
   #end
