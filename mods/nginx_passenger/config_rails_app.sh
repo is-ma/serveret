@@ -17,8 +17,8 @@ echo "
 server {
   server_name _;  # "_" is a catch-all domain
   listen 80;
-  root ~/rails_app/code/public;
-  passenger_ruby ~/.rbenv/shims/ruby;
+  root /home/$USER/rails_app/code/public;
+  passenger_ruby /home/$USER/.rbenv/shims/ruby;
   passenger_app_env $rails_env;  # if staging, Rails environments/staging.rb must exist!
   passenger_friendly_error_pages on;  # on|off, this is great for staging
   passenger_enabled on;
