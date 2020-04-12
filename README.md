@@ -50,7 +50,7 @@ exit  # log it again to apply (test with 'locale')
 # Log in again
 
 # Add serveret:
-git clone https://github.com/is-ma/serveret.git ~/.serveret/ --branch v6.0.2
+git clone https://github.com/is-ma/serveret.git ~/.serveret/ --branch v6.0.4
 cd ~/.serveret
 ```
 
