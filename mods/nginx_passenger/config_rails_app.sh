@@ -20,7 +20,7 @@ server {
   root /home/$USER/rails_app/code/public;
   passenger_ruby /home/$USER/.rbenv/shims/ruby;
   passenger_app_env $rails_env;  # if staging, Rails environments/staging.rb must exist!
-  passenger_friendly_error_pages on;  # on|off, this is great for staging
+  passenger_friendly_error_pages $passenger_friendly_error_pages;  # on|off, this is great for staging
   passenger_enabled on;
 
   server_tokens off;  # remove version
