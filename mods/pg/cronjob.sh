@@ -1,4 +1,6 @@
 #! /bin/bash
+source ~/.serveret/serveret.conf
+
 # test: crontab -l | grep $PG_CTL_PATH
 echo "  * mods/pg/cronjob.sh"
 PG_CTL_PATH=/home/$USER/.asdf/installs/postgres/$pg_version/bin/pg_ctl
