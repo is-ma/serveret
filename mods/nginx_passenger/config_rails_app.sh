@@ -30,8 +30,8 @@ server {
     expires max;  # Thu, 31 Dec 2037 23:55:55 GMT
     add_header Cache-Control public;
   }
-}" > rails_app.conf
-sudo mv rails_app.conf /etc/nginx/sites-available/
+}" > ~/rails_app.conf
+sudo mv ~/rails_app.conf /etc/nginx/sites-available/
 sudo ln -s /etc/nginx/sites-available/rails_app.conf /etc/nginx/sites-enabled/
 
 source ~/.serveret/main/deploy.sh
