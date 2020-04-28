@@ -16,7 +16,7 @@ sudo mv /lib/systemd/system/varnish.service /etc/systemd/system/
 sudo systemctl daemon-reload
 
 # use them every time you change varnish.service || /etc/varnish/default.vcl
-cat ~/.serveret/mods/varnish/bashrc_shortcuts.sh >> ~/.bashrc
+cat ~/.serveret/mods/varnish/bashrc_varnish.sh >> ~/.bashrc
 source ~/.bashrc
 
 # Now what? 
