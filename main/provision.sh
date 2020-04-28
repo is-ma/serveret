@@ -27,6 +27,7 @@ if [ $RAILS == 'yes' ]; then
 fi
 
 [ $ACK == 'yes' ] && source ~/.serveret/mods/ack/ack.sh
+[ $VARNISH_CACHE == 'yes' ] && source ~/.serveret/mods/varnish/$varnish_ver.sh
 [ $UFW == 'yes' ] && source ~/.serveret/mods/ufw.sh
 [ $NGINX_PASSENGER == 'yes' ] && source ~/.serveret/mods/nginx_passenger/install_for_$nginx_passenger_ubuntu_name.sh
 [ $INSTALL_RAILS_APP == 'yes' ] && source ~/.serveret/mods/nginx_passenger/config_rails_app.sh
