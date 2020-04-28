@@ -1,5 +1,6 @@
 
-# Varnish-Cache
+
+### SERVERET: VARNISH-CACHE ###
 source ~/.serveret/serveret.conf
 alias vreload='sudo systemctl daemon-reload && sudo service varnish reload'
 alias vrestart='sudo systemctl daemon-reload && sudo service varnish restart'
