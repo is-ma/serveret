@@ -4,7 +4,7 @@ source ~/.serveret/serveret.conf
 echo "********** Ubuntu: " && cat /etc/issue && echo "" && echo ""
 [ $ISMA_GIT_SHORTCUTS == 'yes' ] && echo "********** Git:" && git --version && echo "" 
 [ $TIME_SYNCHRONIZATION == 'yes' ] && echo "********** Date and time: " && date && echo ""
-[ $POSTGRESQL == 'yes' ] && echo "********** ASDF: " && asdf --version && date && echo ""
+[ $POSTGRESQL == 'yes' ] && echo "********** ASDF: " && asdf --version && echo ""
 [ $POSTGRESQL == 'yes' ] && echo "********** Postgres: " && psql --version && echo ""
 [ $pg_reload_on_reboot == 'yes' ] && echo "********** Crontab configuration: " && crontab -l && echo ""
 [ $pg_allow_remote_access == 'yes' ] && echo "********** Posgres remote access configuration: " && tail -n1 /home/$USER/.asdf/installs/postgres/$pg_version/data/pg_hba.conf && echo ""
