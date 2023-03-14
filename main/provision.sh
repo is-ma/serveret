@@ -18,10 +18,8 @@ if [ $POSTGRESQL == 'yes' ]; then
 fi
 
 if [ $RAILS == 'yes' ]; then
-  source ~/.serveret/mods/ruby/rbenv.sh
   source ~/.serveret/mods/ruby/ruby.sh
   source ~/.serveret/mods/ruby/bundler.sh
-  source ~/.serveret/mods/node/nvm.sh
   source ~/.serveret/mods/node/node.sh
   source ~/.serveret/mods/rails.sh
 fi
