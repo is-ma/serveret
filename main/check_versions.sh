@@ -15,7 +15,7 @@ echo "********** Ubuntu: " && cat /etc/issue && echo "" && echo ""
 [ $RAILS == 'yes' ] && echo "********** Rails: " && rails --version && echo ""
 
 [ $ACK == 'yes' ] && echo "********** Ack: " && ack --version | head -n1 && echo ""
-[ $VARNISH_CACHE == 'yes' ] && echo "********** X: " && sudo service varnish status | head -n5 && echo ""
+[ $VARNISH_CACHE == 'yes' ] && echo "********** Varnish Cache: " && sudo service varnish status | head -n5 && echo ""
 # [ $UFW == 'yes' ] && echo "********** X: " && date && echo ""
 # [ $NGINX_PASSENGER == 'yes' ] && echo "********** X: " && date && echo ""
 # [ $INSTALL_RAILS_APP == 'yes' ] && echo "********** X: " && date && echo ""
