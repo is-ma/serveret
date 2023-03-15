@@ -8,6 +8,8 @@ sudo curl -s https://packagecloud.io/install/repositories/varnishcache/varnish66
 # ubuntu/xenial
 sudo apt-get install -y varnish=6.6.2-1~xenial > /dev/null 2>&1
 
+sudo service varnish stop
+
 # make a copy && move it to the right place && update path
 sudo mv /lib/systemd/system/varnish.service /etc/systemd/system/
 sudo cp /etc/systemd/system/varnish.service /etc/systemd/system/varnish.service.bak
