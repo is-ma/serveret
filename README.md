@@ -95,6 +95,7 @@ For ```rails server``` to work, it isn't required to stop Nginx, but you need to
   - ```RAILS_ENV=development rails db:seed     # first time only```
   - Use 192.168.33.10:3000 to load the app.
 
+
 ### General
   - If you have many servers, it's easier to use names instead of IPs (/etc/hosts).
   - In Rails, symlink your environments: production.rb -> staging.rb (DRY).
@@ -103,10 +104,19 @@ For ```rails server``` to work, it isn't required to stop Nginx, but you need to
     * ```alias hour_app_staging_deploy='ssh deploy@host . /home/deploy/serveret/main/deploy.sh'```
 
 
+### Cronjobs
+Run the following lines and ONLY THEN, add the resulting line to your "crontab -e":
+```sh
+source ~/.serveret/serveret.conf
+
+PG_CTL_PATH=/home/$USER/.asdf/installs/postgres/$pg_version/bin/pg_ctl
+PG_DATA_PATH=/home/$USER/.asdf/installs/postgres/$pg_version/data/
+echo -e "\n### SERVERET: restart services ###\n@reboot $PG_CTL_PATH -l /home/$USER/pg_log -D $PG_DATA_PATH start"
+```
+
 
 # Support
 Please [open an issue](https://github.com/is-ma/serveret/issues/new) for support.
-
 
 
 # Contributing

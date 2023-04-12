@@ -12,7 +12,6 @@ if [ $POSTGRESQL == 'yes' ]; then
   source ~/.serveret/mods/pg/asdf.sh
   source ~/.serveret/mods/pg/pg.sh
   source ~/.serveret/mods/pg/port.sh
-  [ $pg_reload_on_reboot == 'yes' ] && source ~/.serveret/mods/pg/cronjob.sh
   [ $pg_allow_remote_access == 'yes' ] && source ~/.serveret/mods/pg/allow_remote_access.sh
   source ~/.serveret/mods/pg/start.sh
 fi
