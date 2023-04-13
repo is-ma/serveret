@@ -30,6 +30,8 @@ fi
 [ $INSTALL_RAILS_APP == 'yes' ] && source ~/.serveret/mods/nginx_passenger/config_rails_app.sh
 [ $USER == 'vagrant' ] && cp /home/vagrant/.serveret/serveret.conf /vagrant/
 
+source mods/bashrc/customized_aliases_and_rules.sh
+
 echo ""
 echo "***** C H E C K   V E R S I O N S   N O W *****"
 echo ""
