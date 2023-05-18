@@ -1,6 +1,3 @@
-#! /bin/bash
-source ~/.serveret/serveret.conf
-
 # test: node --version | grep $node_version
 echo "- mods/node/node.sh v$node_version"
 

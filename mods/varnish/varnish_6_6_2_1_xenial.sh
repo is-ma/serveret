@@ -1,4 +1,3 @@
-#! /bin/bash
 # test: sudo service varnish start|stop|reload|restart|status
 echo "- mods/varnish/varnish_6_6_2_1_xenial.sh"
 
@@ -7,7 +6,6 @@ sudo curl -s https://packagecloud.io/install/repositories/varnishcache/varnish66
 
 # ubuntu/xenial
 sudo apt-get install -y varnish=6.6.2-1~xenial > /dev/null 2>&1
-
 sudo service varnish stop
 
 # make a copy && move it to the right place && update path
@@ -15,11 +13,13 @@ sudo mv /lib/systemd/system/varnish.service /etc/systemd/system/
 sudo cp /etc/systemd/system/varnish.service /etc/systemd/system/varnish.service.bak
 sudo systemctl daemon-reload
 
-# use these aliases every time you change varnish.service || vreload/vrestart/vupdate
-cat ~/.serveret/mods/varnish/bashrc_varnish.sh >> ~/.bashrc
-source ~/.bashrc
-
-# Now what? 
-# - Access the configuration file: /etc/systemd/system/varnish.service
-# - Add rules to your default.vcl using $varnish_vcl_filepath and vupdate (alias)
-# sudo service varnish stop/start/status/restart
+# aliases
+echo "" >> ~/.bashrc
+echo "### VARNISH CACHE ###" >> ~/.bashrc
+echo "alias v_config='sudo vi /etc/systemd/system/varnish.service'" >> ~/.bashrc
+echo "alias v_edit='sudo vi /etc/varnish/default.vcl'" >> ~/.bashrc 
+echo "alias v_start='sudo systemctl daemon-reload && sudo service varnish start'" >> ~/.bashrc
+echo "alias v_stop='sudo systemctl daemon-reload && sudo service varnish stop'" >> ~/.bashrc
+echo "alias v_reload='sudo systemctl daemon-reload && sudo service varnish reload'" >> ~/.bashrc
+echo "alias v_restart='sudo systemctl daemon-reload && sudo service varnish restart'" >> ~/.bashrc
+echo "alias v_status='sudo systemctl daemon-reload && sudo service varnish status'" >> ~/.bashrc
