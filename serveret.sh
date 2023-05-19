@@ -1,3 +1,4 @@
+# config
 IS_MA__SERVERET_PATH=$HOME/.is-ma/serveret
 
 # IS-MA
@@ -53,4 +54,4 @@ source $IS_MA__SERVERET_PATH/mods/nginx_passenger/install_for_xenial.sh
 echo ""
 echo "***** C H E C K   V E R S I O N S   N O W *****"
 echo ""
-source $IS_MA__SERVERET_PATH/main/check_versions.sh
+source $IS_MA__SERVERET_PATH/check_versions.sh
