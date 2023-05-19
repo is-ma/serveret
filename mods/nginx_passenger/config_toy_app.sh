@@ -1,4 +1,4 @@
-echo "- mods/nginx_passenger/config_rails_app.sh"
+echo "- toy app"
 git clone https://github.com/is-ma/hour-app.git --branch v1.0.4 $HOME/toy_app/code > /dev/null 2>&1
 cd $HOME/toy_app/code
 
@@ -11,7 +11,7 @@ RAILS_ENV=staging rails db:create db:migrate db:seed
 
 # configure Passenger + Nginx
 sudo rm /etc/nginx/sites-enabled/*  # delete default
-echo "
+cat << "EOF" > $HOME/toy_app.conf
 server {
   listen 80;
   server_name _;  # "_" is a catch-all domain
@@ -28,7 +28,8 @@ server {
     expires max;  # Thu, 31 Dec 2037 23:55:55 GMT
     add_header Cache-Control public;
   }
-}" > $HOME/toy_app.conf
+}
+EOF
 sudo mv $HOME/toy_app.conf /etc/nginx/conf.d/
 
 source $HOME/.is-ma/serveret/deploy.sh

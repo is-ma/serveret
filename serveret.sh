@@ -27,7 +27,7 @@ source $IS_MA__SERVERET_PATH/mods/ruby/ruby.sh
 bundler_version=2.1.4
 source $IS_MA__SERVERET_PATH/mods/ruby/bundler.sh
 node_version=13.11.0
-source $IS_MA__SERVERET_PATH/mods/node/node.sh
+source $IS_MA__SERVERET_PATH/mods/node.sh
 rails_version=5.2.8.1
 source $IS_MA__SERVERET_PATH/mods/rails.sh
 
@@ -45,10 +45,10 @@ rules+=("allow https")    # development/production
 source $IS_MA__SERVERET_PATH/mods/ufw.sh
 
 # NGINX/PASSENGER
-source $IS_MA__SERVERET_PATH/mods/nginx_passenger/install_for_xenial.sh
+source $IS_MA__SERVERET_PATH/mods/nginx_passenger/install_for_16_xenial.sh
 
 # toy app
-#source $IS_MA__SERVERET_PATH/mods/nginx_passenger/config_rails_app.sh
+#source $IS_MA__SERVERET_PATH/mods/nginx_passenger/config_toy_app.sh
 
 # checklist
 echo ""

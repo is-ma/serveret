@@ -1,5 +1,5 @@
 # test: sudo ufw status
-echo "- mods/ufw.sh"
+echo "- ufw"
 sudo ufw --force reset > /dev/null
 for (( i=0; i < ${#rules[@]}; i++ )) do
   sudo ufw ${rules[i]} > /dev/null

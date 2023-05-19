@@ -1,4 +1,4 @@
-echo "- mods/ruby/ruby.sh v$ruby_version"
+echo "- ruby v$ruby_version"
 
 asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git > /dev/null 2>&1
 echo "ruby $ruby_version" >> ~/.tool-versions

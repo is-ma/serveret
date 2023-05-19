@@ -1,5 +1,5 @@
 # test: ack --version
-echo "- mods/ack/ack.sh"
+echo "- ack"
 sudo apt-get install -y ack-grep > /dev/null 2>&1
 
 cat << "EOF" >> ~/.bashrc

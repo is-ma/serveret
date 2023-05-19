@@ -1,2 +1,2 @@
-echo "- mods/update_ubuntu.sh"
+echo "- update ubuntu"
 sudo apt-get -y update >/dev/null

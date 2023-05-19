@@ -1,5 +1,5 @@
 # test: node --version | grep $node_version
-echo "- mods/node/node.sh v$node_version"
+echo "- node v$node_version"
 
 # install node
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git > /dev/null 2>&1

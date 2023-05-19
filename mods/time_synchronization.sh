@@ -1,4 +1,4 @@
 # test: timedatectl | grep "Time zone: $timezone"
-echo "- mods/time_synchronization.sh"
+echo "- time_synchronization"
 sudo timedatectl set-timezone $timezone
 sudo timedatectl set-ntp on

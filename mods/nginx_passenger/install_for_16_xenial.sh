@@ -1,5 +1,5 @@
 # test: sudo /usr/sbin/passenger-memory-stats
-echo "- mods/nginx_passenger/install_for_xenial.sh"
+echo "- nginx/passenger"
 sudo apt-get install -y dirmngr gnupg > /dev/null 2>&1
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7 > /dev/null 2>&1
 sudo apt-get install -y apt-transport-https ca-certificates > /dev/null 2>&1
