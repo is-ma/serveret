@@ -7,6 +7,7 @@ source $IS_MA__SERVERET_PATH/mods/isma/gitz.sh
 
 # update and sync
 source $IS_MA__SERVERET_PATH/mods/update_ubuntu.sh
+timezone=America/Regina
 source $IS_MA__SERVERET_PATH/mods/time_synchronization.sh
 
 # small tools
