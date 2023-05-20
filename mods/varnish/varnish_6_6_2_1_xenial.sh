@@ -25,3 +25,6 @@ alias v_reload='sudo systemctl daemon-reload && sudo service varnish reload'
 alias v_restart='sudo systemctl daemon-reload && sudo service varnish restart'
 alias v_status='sudo systemctl daemon-reload && sudo service varnish status'
 EOF
+
+# start
+v_start > /dev/null 2>&1

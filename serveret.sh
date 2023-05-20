@@ -12,14 +12,13 @@ timezone=America/Regina
 source $IS_MA__SERVERET_PATH/mods/time_synchronization.sh
 
 # small tools
-source $IS_MA__SERVERET_PATH/mods/ack/ack.sh
+source $IS_MA__SERVERET_PATH/mods/ack.sh
 
 # PostgreSQL
 asdf_version=0.11.2
 pg_version=11.7
 source $IS_MA__SERVERET_PATH/mods/asdf.sh
 source $IS_MA__SERVERET_PATH/mods/pg.sh
-$HOME/.asdf/installs/postgres/$pg_version/bin/pg_ctl -l $HOME/pg_log -D $HOME/.asdf/installs/postgres/$pg_version/data/ start
 
 # Ruby & Rails
 ruby_version=2.7.7
