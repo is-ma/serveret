@@ -27,4 +27,7 @@ alias v_status='sudo systemctl daemon-reload && sudo service varnish status'
 EOF
 
 # start
-v_start > /dev/null 2>&1
+sudo systemctl daemon-reload && sudo service varnish start > /dev/null 2>&1
+
+# silent source
+source ~/.bashrc > /dev/null 2>&1

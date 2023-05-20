@@ -10,3 +10,6 @@ alias ackb='ack --smart-case --type-add=backend:ext:gitignore,js,coffee,scss,css
 alias ackv="ack 'v\d+\.\d+\.\d+'"
 function ackx { ack "$1" -l --print0 | xargs -0 -n1 sed -i '' -e "s+$1+$2+"; }  # ackx v3.0.5 v3.0.6
 EOF
+
+# silent source
+source ~/.bashrc > /dev/null 2>&1

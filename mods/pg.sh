@@ -1,5 +1,5 @@
 # test: psql --version | grep $pg_version
-echo "- postgres $pg_version"
+echo "- postgres v$pg_version"
 sudo apt-get install -y linux-headers-$(uname -r) build-essential libssl-dev libreadline-dev zlib1g-dev libcurl4-openssl-dev uuid-dev icu-devtools > /dev/null 2>&1
 asdf plugin-add postgres > /dev/null 2>&1
 echo "postgres $pg_version" > ~/.tool-versions
@@ -18,7 +18,7 @@ pg_restart=$(echo "$PG_CTL_PATH -l $HOME/pg_log -D $PG_DATA_PATH restart")
 # aliases
 cat << EOF >> ~/.bashrc
 
-POSTGRE SQL ###"
+### PostgreSQL ###
 alias pg_status='$pg_status'
 alias pg_start='$pg_start'
 alias pg_stop='$pg_stop'
@@ -30,4 +30,7 @@ echo "@reboot $pg_start" > $HOME/my_crontab.conf
 crontab $HOME/my_crontab.conf
 
 # start
-pg_start > /dev/null 2>&1
+$pg_start > /dev/null 2>&1
+
+# silent source
+source ~/.bashrc > /dev/null 2>&1
