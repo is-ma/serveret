@@ -18,7 +18,7 @@ pg_restart=$(echo "$PG_CTL_PATH -l $HOME/pg_log -D $PG_DATA_PATH restart")
 # aliases
 cat << EOF >> ~/.bashrc
 
-### PostgreSQL ###
+### SERVERET: PostgreSQL ###
 alias pg_status='$pg_status'
 alias pg_start='$pg_start'
 alias pg_stop='$pg_stop'

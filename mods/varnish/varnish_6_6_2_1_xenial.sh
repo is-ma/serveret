@@ -16,7 +16,7 @@ sudo systemctl daemon-reload
 # aliases
 cat << EOF >> ~/.bashrc
 
-### VARNISH CACHE ###
+### SERVERET: Varnish Cache ###
 alias v_config='sudo vi /etc/systemd/system/varnish.service'
 alias v_edit='sudo vi /etc/varnish/default.vcl'
 alias v_start='sudo systemctl daemon-reload && sudo service varnish start'
