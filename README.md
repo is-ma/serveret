@@ -52,12 +52,8 @@ exit  # log it again to apply (test with 'locale')
 # Add serveret:
 git clone https://github.com/is-ma/serveret.git ~/.is-ma/serveret/ --branch vX.X.X
 cd ~/.is-ma/serveret/
-```
 
-
-## Installation: Step 4 (Customize Serveret)
-
-```
+# Install software:
 source ~/.is-ma/serveret/serveret.sh
 ```
 
