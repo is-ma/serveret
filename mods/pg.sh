@@ -30,6 +30,8 @@ $pg_start > /dev/null 2>&1
 
 # add a cronjob
 cat << EOF >> $HOME/my_crontab.conf
+# WARNING: for editing, listing and installing cronjobs use aliases: ce, cl, ci;
+#          that way you can have a backup for all your cronjobs (replicable server).
 #
 ### SERVERET: PostgreSQL ###
 @reboot $pg_start > /dev/null 2>&1
