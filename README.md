@@ -60,7 +60,7 @@ source ~/.is-ma/serveret/serveret.sh
 Now put your server IP on a browser to see the example project.
 
 
-### General
+## General
   - If you have many servers, it's easier to use names instead of IPs (/etc/hosts).
   - In Rails, symlink your environments: production.rb -> staging.rb (DRY).
   - Use ```main/deploy.sh``` from your dev machine (see below) to avoid using Capistra-noise:
@@ -68,7 +68,7 @@ Now put your server IP on a browser to see the example project.
     * ```alias hour_app_staging_deploy='ssh deploy@host . /home/deploy/serveret/main/deploy.sh'```
 
 
-### Development
+## Development
 For ```rails server``` to work, it isn't required to stop Nginx, but you need to install missing gems and databases:
   - ```bundle install --with development --no-deployment```
   - ```RAILS_ENV=development rails db:create   # first time only```
@@ -77,7 +77,7 @@ For ```rails server``` to work, it isn't required to stop Nginx, but you need to
   - Use 192.168.33.10:3000 to load the app.
 
 
-### Vagrantfile
+## Vagrantfile
 ```ruby
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
