@@ -50,7 +50,7 @@ source $IS_MA__SERVERET_PATH/mods/nginx_passenger/install_for_16_xenial.sh
 #source $IS_MA__SERVERET_PATH/mods/nginx_passenger/config_toy_app.sh
 
 # checklist
-echo ""
+echo "***********************************************"
 echo "***** C H E C K   V E R S I O N S   N O W *****"
-echo ""
+echo "***********************************************"
 source $IS_MA__SERVERET_PATH/check_versions.sh

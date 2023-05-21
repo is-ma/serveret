@@ -17,7 +17,7 @@ pg_restart=$(echo "$PG_CTL_PATH -l $HOME/pg_log -D $PG_DATA_PATH restart")
 
 # aliases
 cat << EOF >> ~/.bashrc
-
+#
 ### SERVERET: PostgreSQL ###
 alias pg_status='$pg_status'
 alias pg_start='$pg_start'
@@ -25,12 +25,16 @@ alias pg_stop='$pg_stop'
 alias pg_restart='$pg_restart'
 EOF
 
-# crontab
-echo "@reboot $pg_start" > $HOME/my_crontab.conf
-crontab $HOME/my_crontab.conf
-
 # start
 $pg_start > /dev/null 2>&1
+
+# add a cronjob
+cat << EOF >> $HOME/my_crontab.conf
+#
+### SERVERET: PostgreSQL ###
+@reboot $pg_start > /dev/null 2>&1
+EOF
+crontab $HOME/my_crontab.conf > /dev/null 2>&1
 
 # silent source
 source ~/.bashrc > /dev/null 2>&1
