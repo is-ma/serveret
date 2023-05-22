@@ -30,9 +30,6 @@ source $IS_MA__SERVERET_PATH/mods/node.sh
 rails_version=5.2.8.1
 source $IS_MA__SERVERET_PATH/mods/rails.sh
 
-# Varnish Cache
-source $IS_MA__SERVERET_PATH/mods/varnish/varnish_6_6_2_1_xenial.sh
-
 # UFW
 rules=()
 rules+=("allow ssh")      # it's all you need from development
@@ -44,10 +41,13 @@ rules+=("allow https")    # development/production
 source $IS_MA__SERVERET_PATH/mods/ufw.sh
 
 # NGINX/PASSENGER
-source $IS_MA__SERVERET_PATH/mods/nginx_passenger/install_for_16_xenial.sh
+source $IS_MA__SERVERET_PATH/install_for_22_jammy.sh
+
+# Varnish Cache
+source $IS_MA__SERVERET_PATH/mods/varnish/varnish_7_3_0_1_jammy.sh
 
 # toy app
-#source $IS_MA__SERVERET_PATH/mods/nginx_passenger/config_toy_app.sh
+source $IS_MA__SERVERET_PATH/mods/nginx_passenger/config_toy_app.sh
 
 # checklist
 echo "***********************************************"
