@@ -41,13 +41,13 @@ rules+=("allow https")    # development/production
 source $IS_MA__SERVERET_PATH/mods/ufw.sh
 
 # NGINX/PASSENGER
-source $IS_MA__SERVERET_PATH/install_for_22_jammy.sh
+source $IS_MA__SERVERET_PATH/mods/nginx.sh
 
 # Varnish Cache
-source $IS_MA__SERVERET_PATH/mods/varnish/varnish_7_3_0_1_jammy.sh
+source $IS_MA__SERVERET_PATH/mods/varnish.sh
 
 # toy app
-source $IS_MA__SERVERET_PATH/mods/nginx_passenger/config_toy_app.sh
+#source $IS_MA__SERVERET_PATH/mods/nginx_passenger/config_toy_app.sh
 
 # checklist
 echo "***********************************************"
