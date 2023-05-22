@@ -1,56 +1,25 @@
 # config
 IS_MA__SERVERET_PATH=$HOME/.is-ma/serveret
 
-# IS-MA
+# update and sync
+source $IS_MA__SERVERET_PATH/mods/update_ubuntu.sh
+timezone=America/Regina; source $IS_MA__SERVERET_PATH/mods/time_synchronization.sh
+
+# installing...
 source $IS_MA__SERVERET_PATH/mods/isma/aliaz.sh
 source $IS_MA__SERVERET_PATH/mods/isma/colorful.sh
 source $IS_MA__SERVERET_PATH/mods/isma/gitz.sh
-
-# update and sync
-source $IS_MA__SERVERET_PATH/mods/update_ubuntu.sh
-timezone=America/Regina
-source $IS_MA__SERVERET_PATH/mods/time_synchronization.sh
-
-# small tools
-source $IS_MA__SERVERET_PATH/mods/ack.sh
-
-# PostgreSQL
-asdf_version=0.11.2
-pg_version=11.7
-source $IS_MA__SERVERET_PATH/mods/asdf.sh
-source $IS_MA__SERVERET_PATH/mods/pg.sh
-
-# Ruby & Rails
-ruby_version=2.7.7
-source $IS_MA__SERVERET_PATH/mods/ruby/ruby.sh
-bundler_version=2.1.4
-source $IS_MA__SERVERET_PATH/mods/ruby/bundler.sh
-node_version=13.11.0
-source $IS_MA__SERVERET_PATH/mods/node.sh
-rails_version=5.2.8.1
-source $IS_MA__SERVERET_PATH/mods/rails.sh
-
-# UFW
-rules=()
-rules+=("allow ssh")      # it's all you need from development
-rules+=("allow http")     # development/production
-rules+=("allow https")    # development/production
-#rules+=("ufw allow 8080") # open a port
-#rules+=("allow from 111.111.111.111")  # total privileges
-#rules+=("allow from 10.10.10.10 to any port 5432")  # production db
+asdf_version=0.11.2; source $IS_MA__SERVERET_PATH/mods/asdf.sh
+pg_version=11.7; source $IS_MA__SERVERET_PATH/mods/pg.sh
+ruby_version=2.7.7; source $IS_MA__SERVERET_PATH/mods/ruby/ruby.sh
+bundler_version=2.1.4; source $IS_MA__SERVERET_PATH/mods/ruby/bundler.sh
+node_version=13.11.0; source $IS_MA__SERVERET_PATH/mods/node.sh
+rails_version=5.2.8.1; source $IS_MA__SERVERET_PATH/mods/rails.sh
 source $IS_MA__SERVERET_PATH/mods/ufw.sh
-
-# NGINX/PASSENGER
 source $IS_MA__SERVERET_PATH/mods/nginx.sh
-
-# Varnish Cache
 source $IS_MA__SERVERET_PATH/mods/varnish.sh
-
-# toy app
-#source $IS_MA__SERVERET_PATH/mods/nginx_passenger/config_toy_app.sh
+source $IS_MA__SERVERET_PATH/mods/ack.sh
+#source $IS_MA__SERVERET_PATH/mods/config_toy_app.sh
 
 # checklist
-echo "***********************************************"
-echo "***** C H E C K   V E R S I O N S   N O W *****"
-echo "***********************************************"
 source $IS_MA__SERVERET_PATH/check_versions.sh
