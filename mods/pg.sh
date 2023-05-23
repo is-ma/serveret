@@ -28,6 +28,10 @@ EOF
 # start
 $pg_start > /dev/null 2>&1
 
+# create first user/database
+createuser -U postgres $USER
+createdb -U postgres $USER
+
 # add a cronjob
 cat << EOF >> $HOME/my_crontab.conf
 # WARNING: for editing, listing and installing cronjobs use aliases: ce, cl, ci;
