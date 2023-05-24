@@ -17,7 +17,7 @@ node_version=13.11.0; source $IS_MA__SERVERET_PATH/mods/node.sh
 rails_version=5.2.8.1; source $IS_MA__SERVERET_PATH/mods/rails.sh
 source $IS_MA__SERVERET_PATH/mods/ufw.sh
 source $IS_MA__SERVERET_PATH/mods/nginx.sh
-source $IS_MA__SERVERET_PATH/mods/varnish.sh
+source $IS_MA__SERVERET_PATH/mods/varnish.sh  # v7.3.0.1 for jammy
 source $IS_MA__SERVERET_PATH/mods/ack.sh
 #source $IS_MA__SERVERET_PATH/mods/config_toy_app.sh
 
